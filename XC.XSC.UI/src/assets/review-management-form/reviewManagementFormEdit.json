@@ -1,0 +1,88 @@
+{
+    "response": [
+        {
+            "key": "regionId",
+            "label": "Region:",
+            "class": "col-lg-6 mb-3",
+            "controlType": "dropdown",
+            "dropDownUri": "user/getUserRegions",
+            "validations": [],
+            "readOnly": true,
+            "active": true,
+            "value": null,
+            "order": 1
+        },
+        {
+            "key": "teamId",
+            "label": "Team:",
+            "class": "col-lg-6 mb-3",
+            "controlType": "dropdown",
+            "dropDownUri": "team/getTeamList",
+            "validations": [],
+            "readOnly": true,
+            "active": true,
+            "value": null,
+            "order": 1
+        },
+        {
+            "key": "lobId",
+            "label": "Lob:",
+            "class": "col-lg-6 mb-3",
+            "controlType": "dropdown",
+            "dropDownUri": "lob/getUserLob",
+            "validations": [],
+            "readOnly": true,
+            "active": true,
+            "value": null,
+            "order": 1
+        },
+        {
+            "key": "processorId",
+            "label": "Processor:",
+            "class": "col-lg-6 mb-3",
+            "controlType": "multiselect",
+            "validations": [],
+            "readOnly": true,
+            "active": true,
+            "value": null,
+          "order": 1,
+          "options": []
+        },
+        {
+            "key": "reviewTypeId",
+            "label": "Review Type:",
+            "class": "col-lg-6 mb-3",
+            "controlType": "dropdown",
+            "dropDownUri": "enum/getEnum/ReviewType",
+            "validations": [
+                {
+                  "name": "required",
+                  "validator": "Validators.required",
+                  "message": "Review Type is required"
+                }
+              ],
+            "readOnly": false,
+            "active": true,
+            "value": null,
+            "order": 1
+        },
+        {
+            "key": "reviewerId",
+            "label": "Reviewer:",
+            "class": "col-lg-6 mb-3",
+            "controlType": "dropdown",
+            "validations": [
+                {
+                  "name": "required",
+                  "validator": "Validators.required",
+                  "message": "Reviewer is required"
+                }
+              ],
+              "options":[],
+            "readOnly": false,
+            "active": true,
+            "value": null,
+            "order": 1
+        }
+    ]
+}

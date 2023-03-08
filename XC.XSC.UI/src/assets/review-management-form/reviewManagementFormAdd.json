@@ -1,0 +1,115 @@
+{
+    "response": [
+        {
+            "key": "regionId",
+            "label": "Region:",
+            "class": "col-lg-6 mb-3",
+            "controlType": "dropdown",
+            "changeEvent":true,
+            "dropDownUri": "user/getUserRegions",
+            "validations": [
+                {
+                  "name": "required",
+                  "validator": "Validators.required",
+                  "message": "Region is required"
+                }
+              ],              
+            "readOnly": false,
+            "active": true,
+            "value": null,
+            "order": 1
+        },
+        {
+            "key": "teamId",
+            "label": "Team:",
+            "class": "col-lg-6 mb-3",
+            "changeEvent":true,
+            "controlType": "dropdown",
+            "dropDownUri": "team/getTeamList",
+            "validations": [
+                {
+                  "name": "required",
+                  "validator": "Validators.required",
+                  "message": "Team is required"
+                }
+              ],              
+            "readOnly": false,
+            "active": true,
+            "value": null,
+            "order": 1
+        },
+        {
+            "key": "lobId",
+            "label": "Lob:",
+            "class": "col-lg-6 mb-3",
+            "changeEvent":true,
+            "controlType": "dropdown",
+            "dropDownUri": "lob/getUserLob",
+            "validations": [
+                {
+                  "name": "required",
+                  "validator": "Validators.required",
+                  "message": "Lob is required"
+                }
+              ],              
+            "readOnly": false,
+            "active": true,
+            "value": null,
+            "order": 1
+        },
+        {
+            "key": "processorId",
+            "label": "Processor:",
+            "class": "col-lg-6 mb-3",
+            "controlType": "multiselect",
+            "validations": [
+                {
+                  "name": "required",
+                  "validator": "Validators.required",
+                  "message": "Processor is required"
+                }
+              ],  
+            "readOnly": false,
+            "active": true,
+            "value": null,
+            "order": 1,
+            "options":[]
+        },
+        {
+            "key": "reviewtype",
+            "label": "Review Type:",
+            "class": "col-lg-6 mb-3",
+            "controlType": "dropdown",
+            "dropDownUri": "enum/getEnum/ReviewType",
+            "validations": [
+                {
+                  "name": "required",
+                  "validator": "Validators.required",
+                  "message": "Review Type is required"
+                }
+              ],          
+            "readOnly": false,
+            "active": true,
+            "value": null,
+            "order": 1,
+            "options":[]
+        },
+        {
+            "key": "reviewerId",
+            "label": "Reviewer:",
+            "class": "col-lg-6 mb-3",
+            "controlType": "dropdown",
+            "validations": [
+                {
+                  "name": "required",
+                  "validator": "Validators.required",
+                  "message": "Reviewer is required"
+                }
+              ],
+            "readOnly": false,
+            "active": true,
+            "value": null,
+            "order": 1
+        }
+    ]
+}

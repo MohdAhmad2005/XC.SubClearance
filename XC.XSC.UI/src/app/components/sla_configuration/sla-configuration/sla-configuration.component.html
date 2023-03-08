@@ -1,0 +1,31 @@
+<div class="row m-0">
+    <div class="p-0">
+        <div class="me-auto p-2 bd-highlight">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb d-flex">
+                    <li class="breadcrumb-item"><a routerLink="Dashboard"><i class="fa fa-home"></i> Home</a>
+                    </li>
+                    <li class="breadcrumb-item active" aria aria-current="page">Reference Data Management</li>
+                    <li class="breadcrumb-item active" aria-current="page">SLA Management</li>
+                </ol>
+            </nav>
+        </div>
+        <div class="p-2 bd-highlight">
+        </div>
+    </div>
+    <div class="card"> 
+        <div class="d-flex flex-wrap card-header"> 
+            <h4 class="card-title mb-0">SLA Management</h4> 
+            <button class="btn btn-sm btn-primary" (click)="Addpopup()">Add SLA</button> 
+        </div>
+        <ng-container>
+            <generic-static-table [RowData]="tableContent" [FilterField]="globalFilterField"
+                (ActionEventEmitter)="setActionEvents($event)" [ColumnDefination]="columnDefination" class="p-0"
+                [Actions]="actionList" (CheckBoxEventEmitter)="checkBoxChange($event)"></generic-static-table>
+        </ng-container>
+        <ng-container *ngIf="isConfrimAlertVisible">
+            <confirmation-message [ActionReferenceType]="actionReference" [Message]="confirmationMessage"
+                (Accept)="confirmationClick($event)"></confirmation-message> 
+        </ng-container> 
+    </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="row m-0">
+  <div class="p-0">
+    <div class="me-auto p-2 bd-highlight">
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb d-flex">
+          <li class="breadcrumb-item"><a routerLink="dashboard"><i class="fa fa-home"></i> Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">My Account</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="p-2 bd-highlight">
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="d-flex flex-wrap card-header">
+      <h4 class="card-title mb-0">My Account</h4>
+      <p class="my-2 text-primary fw-bolder">Last Login - {{timestamp | date:'dd/MM/yyyy hh:mm:ss'}}</p>
+    </div>
+    <div class="card-body">
+      <form class="mb-4" [formGroup]="myAccountForm" novalidate>
+        <app-account-details></app-account-details>
+        <app-organisation-details></app-organisation-details>
+
+        <div class="row mb-4">
+          <div class="col-lg-12 d-flex justify-content-end">
+            <button class="btn btn-secondary" (click)="discardChanges()">
+              Reset
+            </button>
+            <button class="btn btn-primary" (click)="updateAccountDetails(myAccountForm.value)" [disabled]="myAccountForm.untouched">
+              Submit
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

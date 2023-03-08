@@ -1,0 +1,109 @@
+<div [formGroup]="form">
+  <label [attr.for]="question.key" [id]="question.key" class="col-12 commonLabel question.key">{{question.label}}
+    <ng-container *ngFor="let items of question['validations']">
+      <ng-container *ngIf="items.name =='required'"> <span style="color: red;">*</span></ng-container>
+    </ng-container>
+  </label>
+  <ng-container [ngSwitch]="question.controlType">
+    <input type="hidden" *ngSwitchCase="'hidden'" class="form-control" [formControlName]="question.key"
+    [id]="question.key" />
+    
+    <input type="password" *ngSwitchCase="'password'" class="form-control" [formControlName]="question.key"
+      [id]="question.key" placeholder="{{question.label}}" />
+
+    <input type="number" *ngSwitchCase="'number'" class="form-control" [formControlName]="question.key"
+      [id]="question.key" placeholder="{{question.label}}" />
+
+    <input type="text" *ngSwitchCase="'textbox'" class="form-control" [formControlName]="question.key" [attr.maxlength]="(!!question.maxLength)?question.maxLength:null" [id]="question.key" [readonly]="question.readOnly === true" placeholder="{{question.label}}" #inputValue />
+
+    <div class="input-group" *ngSwitchCase="'datepicker'">
+      <input [id]="question.key" [formControlName]="question.key"
+        class="form-control ngb-datepicker" type="text" #d="bsDatepicker" [readonly]="question.readOnly === true"
+        readonly="readonly" placeholder="dd/mm/yyyy" (bsValueChange)="onValueChange($event)" [bsConfig]="bsDateConfig"
+        bsDatepicker>
+        <span *ngIf="question.showIcon===true" class="input-group-text bg-white" (click)="d.toggle()">
+          <i class="fa fa-calendar-alt"></i>
+        </span>
+    </div>
+    <div class="input-group" *ngSwitchCase="'daterangepicker'">
+      <input [id]="question.key" [formControlName]="question.key"
+        class="form-control ngb-datepicker" type="text" #d="bsDaterangepicker" [readonly]="question.readOnly === true"
+        placeholder="20/09/2022 - 30/09/2022" (bsValueChange)="onDateRangeValueChange($event)"
+        [bsConfig]="bsDateRangeConfig" bsDaterangepicker>
+        <span *ngIf="question.showIcon===true" class="input-group-text bg-white" (click)="d.toggle()">
+          <i class="fa fa-calendar-alt"></i>
+        </span>
+    </div>
+
+    <!-- <cron-editor  *ngSwitchCase="'cron'" #cronEditorDemo [options]="cronOptions" [formControlName]="question.key" >Cron here...</cron-editor> -->
+<!-- <div *ngSwitchCase="'textarea'" class="{{question.class}}"> -->
+    <textarea *ngSwitchCase="'textarea'" class="form-control field-md text-area" style="width: 100%; display: block;"
+      [formControlName]="question.key" [attr.maxlength]="(!!question.maxLength)?question.maxLength:null" [id]="question.key" [readonly]="question.readOnly === true"
+      [ngStyle]="{'height': question.key === 'emailContent' || question.key === 'emailContentTrail'? '10rem' : '','white-space': question.key === 'emailContent' || question.key === 'emailContentTrail'? 'pre-line' : ''}"></textarea>
+    <!-- </div> -->
+
+    <!-- <input type="file" *ngSwitchCase="'file'" class="form-control-file" [formControlName]="question.key"
+      (change)="fileChange($event)" name="file" id="exampleFormControlFile1" multiple style="color:transparent;" /> -->
+
+    <select class="form-select"  [id]="question.key" *ngSwitchCase="'dropdown'" [formControlName]="question.key" [attr.disabled]="question.readOnly ? '' : null"   [attr.readOnly]="question.readOnly ? ' ' : null">
+      <option [ngValue]="null">Select</option>
+      <option *ngFor="let data of question['options']" [ngValue]="data['id']">{{data['name']}}</option>
+    </select>
+
+    <p-multiSelect [filter]="true" *ngSwitchCase="'multiselect'" defaultLabel="Select" [filter]="false"
+      [formControlName]="question.key" [options]="question['cols']" [disabled]="question.readOnly"
+       appendTo="body"  [baseZIndex]="10000" [autoZIndex]="true">
+    </p-multiSelect>
+
+    <p-multiSelect [formControlName]="question.key" *ngSwitchCase="'autocompleteTag'" defaultLabel="Select" [options]="items"
+      [showToggleAll]="false" optionLabel="name" [virtualScroll]="true" [filter]="true"
+      [itemSize]="34" class="multiselect-custom-virtual-scroll" scrollHeight="150px" [resetFilterOnHide]="true">
+      <ng-template let-country pTemplate="item">
+        {{country.value.name}}
+      </ng-template>
+    </p-multiSelect>
+
+      <p-autoComplete [formControlName]="question.key" [delay]="1000" [disabled]="question.readOnly ? true : false" field="name" 
+      styleClass="autocomplete-width p-autocomplete-token-label" *ngSwitchCase="'autocomplete'" (onSelect)="selectAutoCompleteValue($event, question.key)"
+      (completeMethod)="search($event, question)" field="name" [suggestions]="question['result']" [placeholder]="placeholder" >
+    </p-autoComplete>
+
+    <input type="checkbox" *ngSwitchCase="'checkbox'" [formControlName]="question.key" class="checkBox"
+      [attr.disabled]="question.readOnly ? '' : null">
+
+      <ng-container *ngFor="let item of question['radio']">
+        <div  *ngSwitchCase="'radio'" class="form-check form-check-inline pb-4">
+        <input class="form-check-input" type="radio" [id]="item.id" [value]="item.id"
+          [formControlName]="question.key">
+        <label class="form-check-label mr-2" [for]="item.id">{{item.name}}</label>
+      </div>
+      </ng-container>
+      
+    <p-inputNumber class="inputNumber" [maxlength]="question.maxlength" [formControlName]="question.key" *ngSwitchCase="'inputNumber'"
+    [placeholder]="question.placeholder" [disabled]="question.readOnly"></p-inputNumber>
+
+  </ng-container>
+
+  <ng-container *ngFor=" let item of question['validations']">
+    <ng-container *ngIf="item.name == 'required'">
+      <div class="errorMessage"
+        *ngIf="((!isValid) && (this.form.controls[this.question.key].dirty || this.form.controls[this.question.key].touched))"
+        style="color: red;position: relative;">
+        <div *ngIf="this.form.controls[this.question.key].errors['required']">
+          {{item.message}}
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="item.name == 'pattern'">
+      <div class="errorMessage"
+        *ngIf="((!isValid) && (this.form.controls[this.question.key].dirty || this.form.controls[this.question.key].touched))"
+        style="color: red;position: relative;">
+        <div *ngIf="this.form.controls[this.question.key].errors['pattern']">
+          {{item.message}}
+        </div>
+      </div>
+    </ng-container>
+
+  </ng-container>
+</div>

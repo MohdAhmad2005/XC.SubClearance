@@ -1,0 +1,68 @@
+<div class="modal-dialog modal-md modal-dialog-centered m-0">
+
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">Task Audit History</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()">
+      </button>
+    </div>
+    <div class="modal-body">
+
+      <ul class="nav nav-tabs custom-tabs2" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+          <button class="nav-link active" id="pills-1-tab" data-bs-toggle="pill" data-bs-target="#pills-1" type="button"
+            role="tab" aria-controls="pills-1" aria-selected="true">Account History</button>
+        </li>
+        <li class="nav-item" role="presentation">
+          <button class="nav-link" id="pills-2-tab" data-bs-toggle="pill" data-bs-target="#pills-2" type="button"
+            role="tab" aria-controls="pills-2" aria-selected="false">Details</button>
+        </li>
+      </ul>
+      <div class="tab-content" id="pills-tabContent">
+        <div class="tab-pane fade show active" id="pills-1" role="tabpanel" aria-labelledby="pills-1-tab">
+          <table class="table custom-table" >
+            <thead><tr>
+              <th><b>Action</b></th>
+              <th>DateTime</th>
+              <th>By</th>
+             </tr></thead>
+            <tbody >
+            <tr *ngFor="let item of tableContent">
+            <td> {{ item.action }}</td>
+            <td> {{ item.date }} </td>
+            <td> {{ item.by }} </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tab-pane fade" id="pills-2" role="tabpanel" aria-labelledby="pills-2-tab">
+          <div class="table-wrapper mt-3">
+            <div class="table-responsive">
+              <table class="table custom-table" >
+                <tr>
+                  <th>Time Taken for processing - </th>
+                  <td>{{tableDuration.processingDays}} days - {{tableDuration.processingHour<10 ?'0'+ tableDuration.processingHour.toString(): tableDuration.processingHour }}:{{tableDuration.processingMins<10 ?'0'+ tableDuration.processingMins.toString(): tableDuration.processingMins }}:{{tableDuration.processingSecs<10 ?'0'+ tableDuration.processingSecs.toString(): tableDuration.processingSecs }} </td>
+                </tr>
+                <tr>
+                  <th>Time Taken for Review - </th>
+                  <td>{{tableDuration.reviewDays}} days -  {{tableDuration.processingHour<10 ?'0'+ tableDuration.reviewHour.toString(): tableDuration.reviewHour }}:{{tableDuration.reviewMins<10 ?'0'+ tableDuration.reviewMins.toString(): tableDuration.reviewMins }}:{{tableDuration.reviewSecs<10 ?'0'+ tableDuration.reviewSecs.toString(): tableDuration.reviewSecs }} </td>
+                </tr>
+                <tr>
+                  <th>Time Taken for Query - </th>
+                  <td>{{tableDuration.queryDays}} days - {{tableDuration.processingHour<10 ?'0'+ tableDuration.queryHour.toString(): tableDuration.queryHour }}:{{tableDuration.queryMins<10 ?'0'+ tableDuration.queryMins.toString(): tableDuration.queryMins }}:{{tableDuration.querySecs<10 ?'0'+ tableDuration.querySecs.toString(): tableDuration.querySecs }} </td>
+                </tr>
+                <tr>
+                  <th>Total Time Taken - </th>
+                  <td>{{tableDuration.totalDay}} days - {{tableDuration.processingHour<10 ?'0'+ tableDuration.totalHour.toString(): tableDuration.totalHour }}:{{tableDuration.totalMins<10 ?'0'+ tableDuration.totalMins.toString(): tableDuration.totalMins }}:{{tableDuration.totalSecs<10 ?'0'+ tableDuration.totalSecs.toString(): tableDuration.totalSecs }} </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+ 

@@ -1,0 +1,37 @@
+<div class="modal-dialog modal-lg modal-dialog-centered m-0">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Under Query</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal(false)">
+        </button>
+      </div>
+      
+        <div class="modal-body">
+            <form class="mb-4" (ngSubmit)="submitUnderQuery()" [formGroup]="underQueryformGroup">
+                <div class="row mb-3">
+                    <label class="col-lg-3">Reason for Query</label>
+                    <div class="col-lg-9">
+                        <textarea class="form-control" name="underQueryRemark" placeholder="Remark" formControlName="underQueryRemark">
+                            
+                        </textarea>
+                    </div>
+                </div>
+                <div class="row mb-4">
+                    <div class="col-lg-12 d-flex justify-content-end">
+                            <button class="btn btn-secondary" type="button" (click)="reset()">
+                                Reset
+                            </button>
+                            <button class="btn btn-primary">
+                                Submit
+                            </button>
+                    </div>
+                </div>      
+            </form>
+             <ng-container *ngIf="isConfrim">
+                <confirmation-message [Message]="confirmationMessage" (Accept)="confirmationClick($event)"></confirmation-message>
+             </ng-container>
+        </div>
+    </div>
+</div>
+<p-toast position="top-right" key="modalToast"></p-toast>

@@ -1,0 +1,17 @@
+<div class="dropdown user-dropdown" *ngIf="getUserNotificationResponse?.length > 0" >
+  <a class="dropdown-toggle notification" href="#" role="button" id="dropdownMenuLink"
+     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <div class="d-flex align-items-center">
+      <i class="far fa-bell fs-3 text-primary"></i>
+      <div class="notify" *ngIf="getUserNotificationResponse && getUserNotificationResponse.length">
+        <span class="heartbit"></span> <span class="point">{{getUserNotificationResponse.length}}</span>
+      </div>
+    </div>
+  </a>
+  <ul *ngIf="getUserNotificationResponse && getUserNotificationResponse.length" class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up noti-dropdown"
+      aria-labelledby="dropdownMenu2">
+    <li *ngFor="let list of getUserNotificationResponse; let i = index" (click)="UpdateNotificationsStatus(list.id)">
+      {{list.subject}}<br>
+    </li>
+  </ul>
+</div>

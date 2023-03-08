@@ -1,0 +1,261 @@
+<div class="app-content content">
+  <div class="content-wrapper">
+    <div class="content-body">
+      <div class="row m-0 pb-3">
+        <div class="d-flex">
+          <div class="me-auto p-2 bd-highlight">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb d-flex">
+                <li class="breadcrumb-item active"><i class="fa fa-home"></i>Home</li>
+                <li class="breadcrumb-item active">Rule Management</li>
+                <li class="breadcrumb-item active" aria-current="page">Rule List</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="card rule-list-data-1" id="rulefullscreen" [ngClass]="isFullScreen ? 'fullscreen' : ''">
+        <div class="card-content">
+          <div class="card-body">
+            <div class="col-md-8 offset-md-2">
+
+            </div>
+
+            <div class="clearfix"></div>
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                <div class="table-responsive">
+                  <dx-data-grid id="ruleListGrid" [dataSource]="ruleList" [columnAutoWidth]="true"
+                                [allowColumnReordering]="true" [allowColumnResizing]="true" columnResizingMode="widget"
+                                [showBorders]="true" [showRowLines]="true" keyExpr="RuleSetID"
+                                (onToolbarPreparing)="onToolbarPreparing($event)">
+                    <dxo-column-fixing [enabled]="true"></dxo-column-fixing>
+
+                    <dxi-column *ngIf="isAdmin" dataField="" [width]="100" [fixed]="true" caption="Action" [allowFiltering]="false"
+                                [allowSorting]="false" cellTemplate="cellTemplate"></dxi-column>
+                    <dxi-column caption="Rule Set" [fixed]="true" dataField="RuleSetName"></dxi-column>
+                    <dxi-column caption="Rule Type" [fixed]="true" dataField="RuleTypeName"></dxi-column>
+                    <dxi-column caption="Source Context" [fixed]="true" dataField="ContextName"></dxi-column>
+                    <dxi-column caption="Execution Type" [fixed]="true" dataField="RuleExecutionTypeName"></dxi-column>
+                    <dxo-scrolling columnRenderingMode="virtual"></dxo-scrolling>
+
+                    <dxo-remote-operations [sorting]="true" [paging]="true" [filtering]="true" [summary]="true">
+                    </dxo-remote-operations>
+                    <dxo-paging [pageSize]="10"></dxo-paging>
+
+                    <dxo-pager [showPageSizeSelector]="true" [allowedPageSizes]="[10, 25, 50,100]"></dxo-pager>
+                    <dxo-filter-row [visible]="isSearch"></dxo-filter-row>
+                    <dxo-header-filter [visible]="isFilter"></dxo-header-filter>
+
+                    <div *dxTemplate="let action of 'editactions'" class="job-display-data-2">
+                      <ul>
+                      </ul>
+                    </div>
+                    <div *dxTemplate="let data of 'cellTemplate'" class="job-display-data-2">
+                      <a title="Edit Rule" data-toggle="tooltip" data-placement="top"
+                         (click)="editRuleSet(data.data.RuleSetId)">
+                        <i class="fa fa-edit"></i>
+                      </a>
+                      <a title="Delete Rule" (click)="showDialog(data.data.RuleSetId)" data-toggle="modal"
+                         data-target="#delete-alert-rule"><i class="fa fa-trash"></i></a>
+                    </div>
+                    <dxo-pager [visible]="true"></dxo-pager>
+                  </dx-data-grid>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+ 
+</div>
+
+<!-- Rule Popup Fom Start Here -->
+<dx-popup *ngIf="isRulePopUpVisible && isRulePopUpVisible == true" [width]="600" [height]="600" [showTitle]="true"
+          title="{{rulePopupTitle}} Rule" [dragEnabled]="false" [hideOnOutsideClick]="false" [(visible)]="isRulePopUpVisible">
+  <dxo-position my="right" at="right">
+  </dxo-position>
+  <dxo-animation [hide]="{ type: 'slideOut', direction: 'right', duration: 250 }"
+                 [show]="{ type: 'slideIn', direction: 'right', duration: 250 }">
+  </dxo-animation>
+  <div class="rulespopuform">
+    <form class="" (ngSubmit)="onSubmitRuleDetail()">
+      <div class="row mainbodyscroll" style="position: relative;">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Master Template</label>
+            <dx-switch [(value)]="ruleSetDetail.IsMaster" switchedOffText="No" switchedOnText="Yes"></dx-switch>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Process Dependent</label>
+            <dx-switch [(value)]="ruleSetDetail.IsCustom" switchedOffText="No" switchedOnText="Yes"></dx-switch>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="email">Rule Name<span class="required">*</span></label>
+            <dx-text-box [(value)]="ruleSetDetail.RuleSetName" placeholder="Rule Name">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Rule Name is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-text-box>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="email">Type of Rule<span class="required">*</span></label>
+            <dx-select-box [dataSource]="ruleTypeList" [searchEnabled]="false"
+                           [value]="ruleSetDetail.RuleTypeDetail.RuleTypeId" displayExpr="RuleTypeName" valueExpr="RuleTypeId"
+                           placeholder="Rule Type" [showClearButton]="false" (onSelectionChanged)="onRuleTypeChange($event)">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Rule Type is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-select-box>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="email">Select Context<span class="required">*</span></label>
+            <dx-select-box [dataSource]="sourceContextList" [searchEnabled]="true" displayExpr="ContextName"
+                           valueExpr="ContextId" [value]="ruleSetDetail.ContextDetail.ContextId" placeholder="Source Context"
+                           [showClearButton]="true" (onSelectionChanged)="onSourceContextSelected($event)">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Context is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-select-box>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="email">Source<span class="required">*</span></label>
+            <dx-select-box [dataSource]="selectedContextEntities" [searchEnabled]="true" displayExpr="EntityName"
+                           valueExpr="EntityId" placeholder="Source Entity" [showClearButton]="true"
+                           (onSelectionChanged)="onSourceEntitySelected($event)">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Source is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-select-box>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="email">Source Entity<span class="required">*</span></label>
+            <dx-tag-box [dataSource]="sourceSubEntityList" [searchEnabled]="true" displayExpr="SubEntityName"
+                        valueExpr="SubEntityId" placeholder="Source Entity"
+                        (onSelectionChanged)="onSourceSubEntitySelected($event)" applyValueMode="useButtons"
+                        [showClearButton]="false" [showSelectionControls]="true">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Source Entity is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-tag-box>
+          </div>
+        </div>
+        <ng-container *ngIf="showTargetEntity==true">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="email">Target<span class="required">*</span></label>
+              <dx-select-box [dataSource]="selectedContextEntities" [searchEnabled]="true" displayExpr="EntityName"
+                             valueExpr="EntityId" placeholder="Target Entity" [showClearButton]="true"
+                             (onSelectionChanged)="onTargetEntitySelected($event)">
+                <dx-validator>
+                  <dxi-validation-rule type="required" message="Target is required"></dxi-validation-rule>
+                </dx-validator>
+              </dx-select-box>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="email">Target Entity<span class="required">*</span></label>
+              <dx-tag-box [dataSource]="targetSubEntityList" [searchEnabled]="true" displayExpr="SubEntityName"
+                          valueExpr="SubEntityId" [value]="selectedTargetSubEntityList" placeholder="Target Entity"
+                          (onSelectionChanged)="onTargetSubEntitySelected($event)" applyValueMode="useButtons"
+                          [showClearButton]="false" [showSelectionControls]="true">
+                <dx-validator>
+                  <dxi-validation-rule type="required" message="Target Entity is required"></dxi-validation-rule>
+                </dx-validator>
+              </dx-tag-box>
+            </div>
+          </div>
+        </ng-container>
+        <div class="col-md-6" *ngIf="showLOBDiv==true">
+          <div class="form-group">
+            <label for="email">Select LOB<span class="required">*</span></label>
+            <dx-select-box [dataSource]="lobList" [searchEnabled]="true" [(value)]="ruleSetDetail.LOBId"
+                           displayExpr="LobName" valueExpr="LobId" placeholder="Select LOB" [showClearButton]="true">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="LOB is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-select-box>
+          </div>
+        </div>
+        <div class="col-md-6" *ngIf="showExecutionType==true">
+          <div class="form-group">
+            <label for="email">Rule Execution Type<span class="required">*</span></label>
+            <dx-select-box [dataSource]="ruleExecutionTypeList" [searchEnabled]="true"
+                           [value]="ruleSetDetail.RuleExecutionTypeDetail?ruleSetDetail.RuleExecutionTypeDetail.ExecutionTypeId:''"
+                           displayExpr="Name" valueExpr="ExecutionTypeId" placeholder="Execution Type" [showClearButton]="true"
+                           (onSelectionChanged)="onRuleExecutionTypeChange($event)">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Execution Type is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-select-box>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="email">Rule Condition Type<span class="required">*</span></label>
+            <dx-select-box [dataSource]="ruleConfigTypeList" [searchEnabled]="false" [(value)]="selectedRuleConfType"
+                           displayExpr="description" valueExpr="id" placeholder="Rule Configuration Type" [showClearButton]="false">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Rule configuration type is required">
+                </dxi-validation-rule>
+              </dx-validator>
+            </dx-select-box>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="email">Message<span class="required">*</span></label>
+            <dx-text-area [(value)]="ruleSetDetail.Message" placeholder="Value">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Message is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-text-area>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="email">Description</label>
+            <dx-text-area [(value)]="ruleSetDetail.Description" placeholder="Value">
+            </dx-text-area>
+          </div>
+        </div>
+      </div>
+      <div class="row fix-popupfooter">
+        <div class="col-md-6">
+
+        </div>
+        <div class="col-md-6">
+          <dx-button type="button" class="reset btn btn-default" (click)="hideRulePopup()">Cancel</dx-button>
+          <dx-button type="button" [useSubmitBehavior]="true" class="submit btn btn-default"
+                     [disabled]="ruleDetailSubmitted">
+            {{rulePopupTitle}} Rule
+          </dx-button>
+
+        </div>
+      </div>
+    </form>
+  </div>
+</dx-popup>
+<!-- Rule Popup Fom End Here -->
+
+<ng-container *ngIf="isConfrimAlertVisible">
+  <confirmation-message [ActionReferenceType]="actionReference" [Message]="confirmationMessage"
+                        (Accept)="confirmationClick($event)"></confirmation-message>
+</ng-container>

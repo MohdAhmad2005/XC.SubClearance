@@ -1,0 +1,70 @@
+ <!--Desktop Header-->
+<div class="header header-fixed">
+  <div class="container-fluid d-flex align-items-stretch justify-content-between plr-40">
+    <!--Brand-->
+    <div class="brand-logo">
+      <div class="mobile-menu" id="mobilemenu">
+        <i class="fas fa-bars"></i>
+      </div>
+      <!--Logo-->
+      <a href="#">
+        <img alt="Logo" src="../assets/css/images/logo.png" />
+      </a>
+      <!--Logo-->
+    </div>
+    <div class="header-title d-flex align-items-center fw-bolder text-truncate">
+      Xceedance Smart Clearance
+    </div>
+    <!--Brand-->
+
+    <div class="d-flex align-items-center">
+      <app-notification></app-notification>
+      <div class="dropdown user-dropdown">
+        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+           data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <div class="d-flex align-items-center">
+            <span class="User-first-letter">
+              {{userNameFirstLetter}}
+            </span>
+            <span class="text-muted-dark" title="Manager">{{getFirstName}}</span>
+          </div>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
+            aria-labelledby="dropdownMenu2">
+          <li class="user-id">
+            Signed in as<br />
+            <b>{{getEmail}}</b>
+          </li>
+          <li class="user-link">
+            <a routerLink="MyAccount">
+              <i class="material-icons-outlined">
+                account_circle
+              </i>
+              My Account
+            </a>
+          </li>
+          <li class="user-link">
+            <a (click)="openResetPassword()" href="javascript:void(0)">
+              <i class="material-icons-round">
+                lock_open
+              </i>
+              Reset Password
+            </a>
+          </li>
+          <li class="user-logout">
+            <a (click)="logOut()" href="javascript:void(0)">
+              <i class="material-icons-round">
+                logout
+              </i>
+              logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <p-toast position="top-right"></p-toast>
+</div>
+
+
+<!--Desktop Header-->

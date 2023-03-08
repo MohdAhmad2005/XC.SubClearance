@@ -1,0 +1,28 @@
+<div class="row m-0">
+    <div class="p-0">
+        <div class="me-auto p-2 bd-highlight">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb d-flex">
+                  <li class="breadcrumb-item"><a routerLink="/Dashboard"><i class="fa fa-home"></i> Home</a></li>
+                  <li class="breadcrumb-item active" aria-current="page">Search Submission</li>
+                </ol>
+              </nav>
+        </div>
+        <div class="p-2 bd-highlight">
+        </div>
+    </div>
+    <div class="card accordion" id="accordionsearch">
+        <div id="search-heading">
+            <div class="d-flex flex-wrap card-header border-none accordion-button" data-bs-toggle="collapse" data-bs-target="#search-body" aria-expanded="true" aria-controls="search-body">
+                <h4 class="card-title mb-0">Search Submission</h4>
+            </div>
+        </div>
+        <div class="card-body border-top">
+          <app-submission-filter (OutScopeSubmissionFilters)="getOutScopeSubmissionFilters($event)" (InScopeSubmissionFilters)="getInScopeSubmissionFilters($event)" (SubmissionScopeChange)="getSubmissionScope($event)" (Reset)="resetSearchResult()"></app-submission-filter>
+          <app-submission-list *ngIf="!isOutScopeSubmissionListVisible" [SubmissionListControlsVisibility]="submissionListControlsVisibility" [SubmissionFilters]="submissionFiltersInScope" [BindingType]="submissionBindingType" [IsActionVisible]="true"></app-submission-list>
+          <app-submission-list-outscope *ngIf="isOutScopeSubmissionListVisible" [Reset]="resetOutScopeSubmission"  [SubmissionFilters]="submissionFiltersOutscope"></app-submission-list-outscope>
+
+        </div>
+    </div>
+</div>
+

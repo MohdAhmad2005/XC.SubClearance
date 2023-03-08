@@ -1,0 +1,21 @@
+.p-datatable .p-sortable-column .p-sortable-column-badge {
+  display: none !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.p-tieredmenu {
+  padding: 0.25rem 0;
+  background: #ffffff;
+  color: #495057;
+  border: 1px solid #dee2e6;
+  border-radius: 3px;
+  width: 5.5rem;
+}
+
+.p-tieredmenu-overlay {
+  position: absolute;
+  top: unset !important;
+  right: 0 !important;
+  left: unset !important;
+}

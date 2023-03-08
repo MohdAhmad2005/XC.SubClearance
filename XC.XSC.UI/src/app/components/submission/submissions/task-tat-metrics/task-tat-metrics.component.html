@@ -1,0 +1,36 @@
+<div class="modal-dialog modal-lg modal-dialog-centered m-0" *ngIf="taskTatData">
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title">View Task TAT Metrics</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()">
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="table-wrapper mt-3">
+        <div class="table-responsive">
+          <table class="table custom-table">
+
+            <thead>
+            <th>Task Created</th>
+            <th>Defined TAT</th>
+            <th>Due Date</th>
+            <th>TAT Missed (Yes/No)</th>
+            <th>Days Overdue</th>
+            </thead>
+
+            <tbody>
+              <tr>
+               <td>{{getDate(taskTatData.receivedDate)}}</td>
+               <td>{{taskTatData.definedTat}} {{taskTatData.businessDaysText}}</td>
+                <td>{{getDate(taskTatData.dueDate)}}</td>
+                <td>{{taskTatData.tatMissed ?'Yes':'No'}}</td>
+                <td>{{taskTatData.daysOverdue == 0 ?'-':taskTatData.daysOverdue}}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

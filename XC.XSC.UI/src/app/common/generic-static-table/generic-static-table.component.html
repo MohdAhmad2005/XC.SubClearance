@@ -1,0 +1,76 @@
+<div class="col-12 pt-1">
+  <div class="card">
+    <div>
+      <div class=""><!--<div class="table-wrapper table-responsive">-->
+        <p-table #dt1 [value]="RowData" [tableStyle]="{'width': 'auto'}" [paginator]="true" [rows]="5"
+          [globalFilterFields]="FilterField" [columns]="ColumnDefination" [rowsPerPageOptions]="[5,10,25,50]"
+          styleClass="p-datatable-sm">
+          <ng-template pTemplate="caption" *ngIf="IsGlobalSearchFilterVisible">
+            <div class="col-12 d-flex p-0">
+              <div class="ms-auto d-flex align-items-center">
+                <span class="mr-4">Search:</span>
+                <input pInputText type="text" (input)="dt1?.filterGlobal($any($event.target).value, 'contains')"
+                  class="form-control" />
+              </div>
+            </div> 
+          </ng-template>
+          <ng-template pTemplate="header" let-columns>
+            <tr>
+              <th *ngFor="let col of columns" [pSortableColumn]="col.sortKey ? col.sortKey : ''">
+                {{col.header}}
+                <p-sortIcon *ngIf="col.sortKey" [field]="col.sortKey"></p-sortIcon>
+              </th>
+              <th class="action-col" *ngIf="IsActionVisible">Action</th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-rowIndex="rowIndex" let-RowData let-columns="columns">
+            <tr>
+              <td *ngFor="let col of columns">
+                <span *ngIf="col.type!='date'" [innerHtml]="getText(RowData[col.field])"></span>
+                <span *ngIf="col.type=='date'" [innerHtml]="getDate(RowData[col.field])"></span>                
+                <a *ngIf="col.type!='date' && RowData[col.field].length>99" class="a-link cursor-pointer table-eye-icon" 
+                  (click)="onClickLink(RowData, col)"><i class="fa fa-eye"></i></a>
+              </td>
+              <td *ngIf="IsActionVisible">
+                <button class="btn btn-sm dropdown-toggle btn-drop" type="button" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  <i class="fa fa-bars"></i>
+                </button>
+                <ul class="dropdown-menu">
+                  <li *ngFor="let item of Actions"><a class="dropdown-item" (click)="onActionClick(item,RowData)"><i
+                        class="{{item.css}}"></i>{{item.name}}</a></li>
+                </ul>
+                <div class="checkbox-switch">
+                  <div *ngIf="RowData.isActive">
+                    <input type="checkbox" checked name="status" class="input-checkbox" id="toolbar-active"
+                      (click)="onCheckBoxChange($event, RowData)">
+                    <div class="checkbox-animate">
+                      <span class="checkbox-off">In-Active</span>
+                      <span class="checkbox-on">Active</span>
+                    </div>
+                  </div>
+                  <div *ngIf="!RowData.isActive">
+                    <input type="checkbox" name="status" class="input-checkbox" id="toolbar-active"
+                      (click)="onCheckBoxChange($event, RowData)">
+                    <div class="checkbox-animate">
+                      <span class="checkbox-off">In-Active</span>
+                      <span class="checkbox-on">Active</span>
+                    </div>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage" let-columns>
+            <tr *ngIf="IsNoRecordVisible">
+              <td [attr.colspan]=" columns && columns.length"
+                style="text-align: center; color: #999; font-size: 17px; padding-top:20px;" class="no-data-available">
+                No records found
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+    </div>
+  </div>
+</div>

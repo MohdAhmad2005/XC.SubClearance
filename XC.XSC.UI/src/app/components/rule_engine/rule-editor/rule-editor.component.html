@@ -1,0 +1,651 @@
+
+<div class="app-content content">
+  <div class="content-wrapper">
+    <div class="content-body">
+      <div class="row m-0 pb-3">
+        <div class="d-flex">
+          <div class="me-auto p-2 bd-highlight">
+            <nav aria-label="breadcrumb">
+              <ol class="breadcrumb d-flex">
+                <li class="breadcrumb-item active"><a routerLink="/rule-conf/rule-list">Rule Set List</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Rule Editor</li>
+              </ol>
+            </nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="card job-form-data-1">
+        <form class="form" (ngSubmit)="createRule()">
+          <div class="card-body job-form-data-3">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="rulelabel">
+                  <div class="row">
+                    <div class="col-md-10">
+                      <ul>
+                        <li><label>Rule Name</label>{{ruleSetDetail.RuleSetName}}</li>
+                        <li><label>Type</label>{{ruleSetDetail.RuleTypeDetail.RuleTypeName}}</li>
+                        <li><label>Source Context</label>{{ruleSetDetail.ContextDetail.ContextName}}</li>
+                      </ul>
+                    </div>
+                    <div class="col-md-2">
+                      <!--<button type="button"  (click)="CloseButtonClicked()"><i class="fa fa-window-close"></i></button>-->
+                      <button type="submit" class="btn btn-primary float-end">Save</button>
+                    </div>
+
+                  </div>
+                  <div class="hr1"></div>
+                  <div class="ruleeditorarea">
+
+                    <div class="row mt10" *ngFor="let rule of ruleList; let ruleIndex = index;">
+                      <div class="col-md-12">
+                        <span class="rulerow">
+                          <p>{{ruleIndex>0?'Else If':'If'}}</p>
+                          <span class="ruleclose" *ngIf="ruleIndex > 1" (click)="removeRuleRecord(rule.RuleId)">
+                            <i class="fa fa-window-close" tooltip="Remove rule" data-placement="bottom"></i>
+                          </span>
+                        </span>
+                        <ng-container *ngFor="let ruleExp of getExpressionList(rule.RuleId) as filteredExpressions;let ruleExpIndex=index;">
+                          <div class="editrow">
+                            <span class="closerow" *ngIf="ruleExpIndex>0"
+                                  (click)="removeRuleExpRecord(ruleExp.ExpressionId,filteredExpressions[ruleExpIndex-1], filteredExpressions.length==(ruleExpIndex+1))">
+                              <i class="fa fa-window-close"></i>
+                            </span>
+                            <span>
+                              <select class="form-control" [ngModel]="ruleExp.LeftOpTypeId"
+                                      [ngModelOptions]="{standalone: true}"
+                                      (change)="onLeftOpTypeChange($event, ruleExp.ExpressionId)">
+                                <ng-container *ngFor="let opType of this.operandTypeList">
+                                  <option *ngIf="opType.OperandTypeId != operandTypeConst.Function && opType.OperandTypeId != operandTypeConst.Query"
+                                          [value]="opType.OperandTypeId">
+                                    {{opType.Description}}
+                                  </option>
+                                </ng-container>
+                              </select>
+                            </span>
+                            <span *ngIf="ruleExp.LeftOpTypeId == operandTypeConst.Value">
+                              <input type="text" class="form-control" [value]="ruleExp.LeftOpValue"
+                                     (focusout)="onLeftOpFocusOut($event,ruleExp.ExpressionId)"
+                                     placeholder="Enter value">
+                            </span>
+                            <span *ngIf="ruleExp.LeftOpTypeId == operandTypeConst.Reference">
+                              <dx-select-box [dataSource]="sourceSubEntityList" [searchEnabled]="true"
+                                             [value]="ruleExp.LeftSubEntityDetail?ruleExp.LeftSubEntityDetail.SubEntityId:''"
+                                             displayExpr="DisplayName" valueExpr="SubEntityId" placeholder="Select Entity"
+                                             [showClearButton]="false"
+                                             (onValueChanged)="onLeftEntitySelected($event.value,ruleExp.ExpressionId)"
+                                             [elementAttr]="dxSelectCustomAttr" [stylingMode]="'underlined'">
+                                <div *dxTemplate="let data of 'dropDownButton'">
+
+                                </div>
+                              </dx-select-box>
+                            </span>
+                            <span *ngIf="ruleExp.LeftOpTypeId == operandTypeConst.Reference && ruleExp.LeftSubEntityDetail && ruleExp.LeftSubEntityDetail.SubEntityId>0">
+                              <dx-select-box [dataSource]="this.fieldListForEntity[ruleExp.LeftSubEntityDetail.SubEntityId]"
+                                             [searchEnabled]="true"
+                                             [value]="ruleExp.LeftOperandFieldDetail?ruleExp.LeftOperandFieldDetail.FieldId:''"
+                                             displayExpr="DisplayName" valueExpr="FieldId" placeholder="Select Entity"
+                                             [showClearButton]="false"
+                                             (onValueChanged)="onLeftFieldSelected($event.value,ruleExp.ExpressionId)"
+                                             [elementAttr]="dxSelectCustomAttr" [stylingMode]="'underlined'">
+                                <div *dxTemplate="let data of 'dropDownButton'">
+                                </div>
+                              </dx-select-box>
+                            </span>
+                            <span *ngIf="(ruleExp.LeftOpValue && ruleExp.LeftOpValue != '') || (ruleExp.LeftOperandFieldDetail && ruleExp.LeftOperandFieldDetail.FieldId>0)">
+                              <select class="form-control"
+                                      [ngModel]="ruleExp.ComparisonOperatorDetail?ruleExp.ComparisonOperatorDetail.OperatorId:''"
+                                      [ngModelOptions]="{standalone: true}"
+                                      (change)="onCompOperatorSelected($event,ruleExp.ExpressionId)">
+                                <option value="" selected hidden>Select Operator</option>
+                                <option *ngFor="let operator of getComparisonOperatorCollection(ruleExp.LeftOpTypeId,ruleExp.LeftSubEntityDetail,ruleExp.LeftOperandFieldDetail)"
+                                        [ngValue]="operator.OperatorId">
+                                  {{operator.Name}}
+                                </option>
+                              </select>
+                            </span>
+                            <span *ngIf="ruleExp.ComparisonOperatorDetail &&
+                                  ruleExp.ComparisonOperatorDetail.OperatorId>
+                              0 &&
+                              ruleExp.ComparisonOperatorDetail.OperatorId!=7 &&
+                              ruleExp.ComparisonOperatorDetail.OperatorId != 11">
+                              <select class="form-control" [ngModel]="ruleExp.RightOpTypeId"
+                                      [ngModelOptions]="{standalone: true}"
+                                      (change)="onRightOpTypeChange($event, ruleExp.ExpressionId)">
+                                <ng-container *ngFor="let opType of this.operandTypeList">
+                                  <option *ngIf="opType.OperandTypeId != operandTypeConst.Function || isFunctionOperandAllowed(getExpressionLeftOperandDataType(ruleExp))==true"
+                                          [value]="opType.OperandTypeId">
+                                    {{opType.Description}}
+                                  </option>
+                                </ng-container>
+                              </select>
+                            </span>
+                            <ng-container *ngIf="ruleExp.ComparisonOperatorDetail && ruleExp.ComparisonOperatorDetail.OperatorId>0 && ruleExp.RightOpTypeId== operandTypeConst.Value">
+                              <ng-container *ngIf="ruleExp.ComparisonOperatorDetail.OperatorId == 7">
+                                <span>
+                                  <input type="text" class="form-control"
+                                         [value]="getDelimitedValueAtIndex(ruleExp.RightOpValue,0)"
+                                         (focusout)="onRightOpFocusOut($event, undefined,ruleExp.ExpressionId, false)"
+                                         placeholder="Enter From value">
+                                </span>
+                                <span>
+                                  <input type="text" class="form-control"
+                                         [value]="getDelimitedValueAtIndex(ruleExp.RightOpValue,1)"
+                                         (focusout)="onRightOpFocusOut($event, undefined,ruleExp.ExpressionId,true)"
+                                         placeholder="Enter To value">
+                                </span>
+                              </ng-container>
+                              <ng-container *ngIf="ruleExp.LeftOperandFieldDetail && ruleExp.ComparisonOperatorDetail.OperatorId == 11">
+                                <span>
+                                  <dx-tag-box [dataSource]="masterDataListForField[ruleExp.LeftOperandFieldDetail.FieldId]"
+                                              displayExpr="Description" valueExpr="Code" placeholder="Select Value"
+                                              [showClearButton]="false" [showSelectionControls]="true" [searchEnabled]="true"
+                                              (onValueChanged)="onRightOpFocusOut(undefined,$event.value,ruleExp.ExpressionId,false)"
+                                              applyValueMode="useButtons" [stylingMode]="'underlined'"
+                                              [elementAttr]="dxSelectCustomAttr">
+                                  </dx-tag-box>
+                                </span>
+                              </ng-container>
+                              <ng-container *ngIf="ruleExp.ComparisonOperatorDetail.OperatorId !=7 &&  ruleExp.ComparisonOperatorDetail.OperatorId != 11">
+                                <span>
+                                  <input type="text" class="form-control" [value]="ruleExp.RightOpValue"
+                                         (focusout)="onRightOpFocusOut($event,undefined,ruleExp.ExpressionId,false)"
+                                         placeholder="Enter value">
+                                </span>
+                              </ng-container>
+                            </ng-container>
+                            <span *ngIf="ruleExp.RightOpTypeId==operandTypeConst.Reference">
+                              <dx-select-box [dataSource]="sourceSubEntityList" [searchEnabled]="true"
+                                             [value]="ruleExp.RightSubEntityDetail?ruleExp.RightSubEntityDetail.SubEntityId:''"
+                                             displayExpr="DisplayName" valueExpr="SubEntityId" placeholder="Select Entity"
+                                             [showClearButton]="false"
+                                             (onValueChanged)="onRightEntitySelected($event.value,ruleExp.ExpressionId)"
+                                             [elementAttr]="dxSelectCustomAttr">
+                                <div *dxTemplate="let data of 'dropDownButton'">
+
+                                </div>
+                              </dx-select-box>
+                            </span>
+                            <span *ngIf="ruleExp.RightOpTypeId == operandTypeConst.Reference && ruleExp.RightSubEntityDetail && ruleExp.RightSubEntityDetail.SubEntityId>0">
+                              <dx-select-box [dataSource]="this.fieldListForEntity[ruleExp.RightSubEntityDetail.SubEntityId]"
+                                             [searchEnabled]="true"
+                                             [value]="ruleExp.RightOperandFieldDetail?ruleExp.RightOperandFieldDetail.FieldId:''"
+                                             displayExpr="DisplayName" valueExpr="FieldId" placeholder="Select Entity"
+                                             [showClearButton]="false"
+                                             (onValueChanged)="onRightFieldSelected($event.value,ruleExp.ExpressionId)"
+                                             [elementAttr]="dxSelectCustomAttr">
+                                <div *dxTemplate="let data of 'dropDownButton'">
+
+                                </div>
+                              </dx-select-box>
+                            </span>
+                            <span *ngIf="ruleExp.RightOpTypeId== operandTypeConst.Function">
+                              <select class="form-control"
+                                      [ngModel]="ruleExp.RightOpFunctionDetail?ruleExp.RightOpFunctionDetail.FunctionId:''"
+                                      [ngModelOptions]="{standalone: true}"
+                                      (change)="onFunctionSelected($event,ruleExp.ExpressionId)">
+                                <option value="" selected hidden>Select Function</option>
+                                <option *ngFor="let ruleFn of this.functionListForDataType[getExpressionLeftOperandDataType(ruleExp)]"
+                                        [value]="ruleFn.FunctionId">
+                                  {{ruleFn.FunctionName}}
+                                </option>
+                              </select>
+                            </span>
+                            <span *ngIf="ruleExp.RightOpTypeId== operandTypeConst.Query">
+                              <button type="button" class="addaction" (click)="showQueryEditor(ruleExp.ExpressionId)"
+                                      data-placement="right" tooltip="Edit Query">
+                                Edit Query
+                              </button>
+                            </span>
+                            <span *ngIf="ruleExp.RightOpTypeId!=undefined  && ruleExp.RightOpTypeId != operandTypeConst.Function">
+                              <select class="form-control oprator"
+                                      [ngModel]="ruleExp.AssignmentOperatorDetail?ruleExp.AssignmentOperatorDetail.OperatorId:''"
+                                      [ngModelOptions]="{standalone: true}"
+                                      (change)="onRuleExpAssignmentOperatorChange($event, ruleExp.ExpressionId)">
+                                <option value="" selected hidden>+</option>
+                                <option *ngFor="let operator of assignmentOperatorList" [value]="operator.OperatorId">
+                                  {{operator.Name}}
+                                </option>
+                              </select>
+                            </span>
+                            <span *ngIf="ruleExp.RightOpTypeId!=undefined">
+                              <select class="form-control oprator"
+                                      [ngModel]="ruleExp.NextOperatorDetail?ruleExp.NextOperatorDetail.OperatorId:''"
+                                      [ngModelOptions]="{standalone: true}"
+                                      (change)="onNextOperatorChange($event, rule.RuleId,ruleExp.ExpressionId)">
+                                <option value="" selected hidden>+</option>
+                                <option *ngFor="let operator of logicalOperatorList" [value]="operator.OperatorId">
+                                  {{operator.Name}}
+                                </option>
+                              </select>
+                            </span>
+                          </div>
+                          <ng-container *ngFor="let funcParameterDetail of getRuleExpressionFunctionParameterList(ruleExp.ExpressionId) as filteredParamterDetail;let currentParameterIndex=index;">
+                            <div class="custommargin">
+                              <div class="editrow">
+                                <span class="closerow"
+                                      (click)="removeFunctionParameterRecord(funcParameterDetail.ParameterDetailId, funcParameterDetail.ExpressionId, filteredParamterDetail[currentParameterIndex-1],filteredParamterDetail.length==(currentParameterIndex+1))">
+                                  <i class="fa fa-window-close"></i>
+                                </span>
+                                <span>
+                                  <select class="form-control" [ngModel]="funcParameterDetail.ParameterTypeId"
+                                          [ngModelOptions]="{standalone: true}"
+                                          (change)="onFuncParameterTypeChange($event, funcParameterDetail.ParameterDetailId)">
+                                    <ng-container *ngFor="let opType of this.operandTypeList">
+                                      <option *ngIf="opType.OperandTypeId != operandTypeConst.Function && opType.OperandTypeId != operandTypeConst.Query"
+                                              [value]="opType.OperandTypeId">
+                                        {{opType.Description}}
+                                      </option>
+                                    </ng-container>
+                                  </select>
+                                </span>
+                                <span *ngIf="funcParameterDetail.ParameterTypeId == operandTypeConst.Value">
+                                  <input type="text" class="form-control" [value]="funcParameterDetail.ParameterValue"
+                                         (focusout)="onFunctionParameterValueFocusOut($event,funcParameterDetail.ParameterDetailId)"
+                                         placeholder="Enter value">
+                                </span>
+                                <span *ngIf="funcParameterDetail.ParameterTypeId== operandTypeConst.Reference">
+                                  <dx-select-box [dataSource]="sourceSubEntityList" [searchEnabled]="true"
+                                                 [value]="funcParameterDetail.SubEntityDetail?funcParameterDetail.SubEntityDetail.SubEntityId:''"
+                                                 displayExpr="DisplayName" valueExpr="SubEntityId" placeholder="Select Entity"
+                                                 [showClearButton]="false"
+                                                 (onValueChanged)="onFunctionParameterSubEntitySelected($event.value,funcParameterDetail.ParameterDetailId)"
+                                                 [elementAttr]="dxSelectCustomAttr">
+                                    <div *dxTemplate="let data of 'dropDownButton'">
+
+                                    </div>
+                                  </dx-select-box>
+                                </span>
+                                <span *ngIf="funcParameterDetail.ParameterTypeId == operandTypeConst.Reference && funcParameterDetail.SubEntityDetail">
+                                  <dx-select-box [dataSource]="fieldListForEntity[funcParameterDetail.SubEntityDetail.SubEntityId]"
+                                                 [searchEnabled]="true"
+                                                 [value]="funcParameterDetail.FieldDetail?funcParameterDetail.FieldDetail.FieldId:''"
+                                                 displayExpr="DisplayName" valueExpr="FieldId" placeholder="Select Entity"
+                                                 [showClearButton]="false"
+                                                 (onValueChanged)="onFunctionParameterFieldSelected($event.value,funcParameterDetail.ParameterDetailId)"
+                                                 [elementAttr]="dxSelectCustomAttr">
+                                    <div *dxTemplate="let data of 'dropDownButton'">
+
+                                    </div>
+                                  </dx-select-box>
+                                </span>
+                                <span *ngIf="ruleExp.RightOpTypeId != undefined && ruleExp.RightOpTypeId != operandTypeConst.Function">
+                                  <select class="form-control oprator"
+                                          [ngModel]="funcParameterDetail.AssignmentOperatorDetail?funcParameterDetail.AssignmentOperatorDetail.OperatorId:''"
+                                          [ngModelOptions]="{standalone: true}"
+                                          (change)="onFuncParamAssignmentOperatorChange($event, funcParameterDetail.ExpressionId,funcParameterDetail.ParameterDetailId)">
+                                    <option value="" selected hidden>+</option>
+                                    <option *ngFor="let operator of assignmentOperatorList"
+                                            [value]="operator.OperatorId">
+                                      {{operator.Name}}
+                                    </option>
+                                  </select>
+                                </span>
+                                <span *ngIf="ruleExp.RightOpTypeId == operandTypeConst.Function && funcParameterDetail.ParameterTypeId !=undefined && filteredParamterDetail.length==(currentParameterIndex+1)">
+                                  <button type="button" class="addaction"
+                                          (click)="generateNewRuleExpFunctionParameterRecord(ruleExp.ExpressionId)"
+                                          data-placement="right" tooltip="Add Parameter">
+                                    +
+                                  </button>
+                                </span>
+                              </div>
+                            </div>
+                          </ng-container>
+                        </ng-container>
+                        <p class="mt10">Then</p>
+                        <ng-container *ngFor="let action of getActionList(rule.RuleId)">
+                          <div class="acset">
+                            <span class="ruleclose" (click)="removeActionRecord(action.ActionId)">
+                              <i class="fa fa-trash"></i>
+                            </span>
+                            <ng-container *ngFor="let actionExp of getActionExpressionList(action.ActionId) as filteredActionExpressions;let actionExpIndex=index;">
+                              <div class="editrow">
+                                <span class="closerow" *ngIf="actionExpIndex>0"
+                                      (click)="removeActionExpRecord(actionExp.ExpressionId,filteredActionExpressions[actionExpIndex-1],filteredActionExpressions.length==(actionExpIndex+1))">
+                                  <i class="fa fa-window-close"></i>
+                                </span>
+                                <span>
+                                  Set
+                                </span>
+                                <span>
+
+                                  <dx-select-box [dataSource]="targetSubEntityList" [searchEnabled]="true"
+                                                 [value]="actionExp.LeftSubEntityDetail?actionExp.LeftSubEntityDetail.SubEntityId:''"
+                                                 displayExpr="DisplayName" valueExpr="SubEntityId" placeholder="Select Entity"
+                                                 [showClearButton]="false"
+                                                 (onValueChanged)="onActionLeftEntitySelected($event.value,actionExp.ExpressionId)"
+                                                 [elementAttr]="dxSelectCustomAttr">
+                                    <div *dxTemplate="let data of 'dropDownButton'">
+
+                                    </div>
+                                  </dx-select-box>
+                                </span>
+                                <span *ngIf="actionExp.LeftSubEntityDetail && actionExp.LeftSubEntityDetail.SubEntityId > 0">
+
+                                  <dx-select-box [dataSource]="this.fieldListForEntity[actionExp.LeftSubEntityDetail.SubEntityId]"
+                                                 [searchEnabled]="true"
+                                                 [value]="actionExp.LeftOperandFieldDetail?actionExp.LeftOperandFieldDetail.FieldId:''"
+                                                 displayExpr="DisplayName" valueExpr="FieldId" placeholder="Select Field"
+                                                 [showClearButton]="false"
+                                                 (onValueChanged)="onActionLeftFieldSelected($event.value,actionExp.ExpressionId)"
+                                                 [elementAttr]="dxSelectCustomAttr">
+                                    <div *dxTemplate="let data of 'dropDownButton'">
+
+                                    </div>
+                                  </dx-select-box>
+                                </span>
+                                <ng-container *ngIf="actionExp.LeftOperandFieldDetail && actionExp.LeftOperandFieldDetail.FieldId > 0">
+                                  <span *ngIf="rule.ActionTypeId != ruleActionTypeConst.AggregateOperation">
+                                    <select class="form-control" [ngModel]="actionExp.RightOpTypeId"
+                                            [ngModelOptions]="{standalone: true}"
+                                            (change)="onActionRightOpTypeChange($event, actionExp.ExpressionId)">
+                                      <ng-container *ngFor="let opType of this.operandTypeList">
+                                        <option *ngIf="opType.OperandTypeId != operandTypeConst.Query &&
+                                        (
+                                          opType.OperandTypeId != operandTypeConst.Function ||
+                                          isFunctionOperandAllowed(actionExp.LeftOperandFieldDetail.DataTypeId)==true
+                                        )" [value]="opType.OperandTypeId">
+                                          {{opType.Description}}
+                                        </option>
+                                      </ng-container>
+                                    </select>
+                                  </span>
+                                  <span *ngIf="rule.ActionTypeId == ruleActionTypeConst.AggregateOperation">
+                                    <select class="form-control" [ngModel]="actionExp.RightOpTypeId"
+                                            [ngModelOptions]="{standalone: true}"
+                                            (change)="onActionRightOpTypeChange($event, actionExp.ExpressionId)">
+                                      <option value="" selected hidden>+</option>
+                                      <ng-container *ngFor="let opType of this.operandTypeList">
+                                        <option *ngIf="opType.OperandTypeId == operandTypeConst.Function"
+                                                [value]="opType.OperandTypeId">
+                                          {{opType.Description}}
+                                        </option>
+                                      </ng-container>
+                                    </select>
+                                  </span>
+                                </ng-container>
+                                <span *ngIf="actionExp.LeftOperandFieldDetail && actionExp.LeftOperandFieldDetail.FieldId > 0 && actionExp.RightOpTypeId== operandTypeConst.Value">
+                                  <input *ngIf="isMasterSourceDataAllowed(actionExp.LeftSubEntityDetail.SubEntityId,actionExp.LeftOperandFieldDetail.FieldId) == false"
+                                         type="text" class="form-control" [value]="actionExp.RightOpValue"
+                                         (focusout)="onActionRightOpFocusOut($event,undefined,actionExp.ExpressionId)"
+                                         placeholder="Enter value">
+                                  <ng-container *ngIf="isMasterSourceDataAllowed(actionExp.LeftSubEntityDetail.SubEntityId,actionExp.LeftOperandFieldDetail.FieldId) == true">
+                                    <dx-select-box [dataSource]="masterDataListForField[actionExp.LeftOperandFieldDetail.FieldId]"
+                                                   [searchEnabled]="true" [value]="actionExp.RightOpValue" displayExpr="Description"
+                                                   valueExpr="Code" placeholder="Select Value" [showClearButton]="false"
+                                                   (onValueChanged)="onActionRightOpFocusOut($event.value,undefined,actionExp.ExpressionId)"
+                                                   [elementAttr]="dxSelectCustomAttr">
+                                      <div *dxTemplate="let data of 'dropDownButton'">
+
+                                      </div>
+                                    </dx-select-box>
+
+                                  </ng-container>
+                                </span>
+                                <span *ngIf="actionExp.RightOpTypeId==operandTypeConst.Reference">
+                                  <dx-select-box [dataSource]="sourceSubEntityList" [searchEnabled]="true"
+                                                 [value]="actionExp.RightSubEntityDetail?actionExp.RightSubEntityDetail.SubEntityId:''"
+                                                 displayExpr="DisplayName" valueExpr="SubEntityId" placeholder="Select Entity"
+                                                 [showClearButton]="false"
+                                                 (onValueChanged)="onActionRightEntitySelected($event.value,actionExp.ExpressionId)"
+                                                 [elementAttr]="dxSelectCustomAttr">
+                                    <div *dxTemplate="let data of 'dropDownButton'">
+
+                                    </div>
+                                  </dx-select-box>
+                                </span>
+                                <span *ngIf="actionExp.LeftOperandFieldDetail && actionExp.LeftOperandFieldDetail.FieldId > 0 && actionExp.RightOpTypeId==operandTypeConst.Reference && actionExp.RightSubEntityDetail">
+                                  <dx-select-box [dataSource]="this.fieldListForEntity[actionExp.RightSubEntityDetail.SubEntityId]"
+                                                 [searchEnabled]="true"
+                                                 [value]="actionExp.RightOperandFieldDetail?actionExp.RightOperandFieldDetail.FieldId:''"
+                                                 displayExpr="DisplayName" valueExpr="FieldId" placeholder="Select Field"
+                                                 [showClearButton]="false"
+                                                 (onValueChanged)="onActionRightFieldSelected($event.value,actionExp.ExpressionId)"
+                                                 [elementAttr]="dxSelectCustomAttr">
+                                    <div *dxTemplate="let data of 'dropDownButton'">
+
+                                    </div>
+                                  </dx-select-box>
+                                </span>
+                                <span *ngIf="actionExp.LeftOperandFieldDetail && actionExp.LeftOperandFieldDetail.FieldId > 0 && actionExp.RightOpTypeId==operandTypeConst.Function">
+
+                                  <select class="form-control"
+                                          [ngModel]="actionExp.RightOpFunctionDetail?actionExp.RightOpFunctionDetail.FunctionId:''"
+                                          [ngModelOptions]="{standalone: true}"
+                                          (change)="onActionFunctionSelected($event,actionExp.ExpressionId)">
+                                    <option value="" selected hidden>Select Function</option>
+                                    <option *ngFor="let funcDetail of getFunctionListForDataType(actionExp.LeftOperandFieldDetail.DataTypeId,true, rule.ActionTypeId == ruleActionTypeConst.AggregateOperation)"
+                                            [value]="funcDetail.FunctionId">
+                                      {{funcDetail.FunctionName}}
+                                    </option>
+                                  </select>
+                                </span>
+                                <span *ngIf="actionExp.LeftOperandFieldDetail && actionExp.LeftOperandFieldDetail.FieldId > 0 && actionExp.RightOpTypeId!=undefined && actionExp.RightOpTypeId!= operandTypeConst.Function">
+                                  <select class="form-control oprator"
+                                          [ngModel]="actionExp.AssignmentOperatorDetail?actionExp.AssignmentOperatorDetail.OperatorId:''"
+                                          [ngModelOptions]="{standalone: true}"
+                                          (change)="onActionAssignmentOperatorChange($event, action.ActionId,actionExp.ExpressionId)">
+                                    <option value="" selected hidden>+</option>
+                                    <option *ngFor="let operator of assignmentOperatorList"
+                                            [value]="operator.OperatorId">
+                                      {{operator.Name}}
+                                    </option>
+                                  </select>
+                                </span>
+                                <span *ngIf="actionExp.RightOpTypeId!=undefined && filteredActionExpressions.length==(actionExpIndex+1)">
+                                  <button type="button" class="addaction"
+                                          (click)="generateNewActionExpression(action.ActionId)" data-placement="right"
+                                          tooltip="Add Action">
+                                    +
+                                  </button>
+                                </span>
+                              </div>
+                              <ng-container *ngFor="let subExp of getActionSubExpressionList(actionExp.ExpressionId) as filteredSubExpressions;let subExpIndex=index;">
+                                <div class="custommargin">
+                                  <div class="editrow">
+                                    <span class="closerow"
+                                          (click)="removeActionSubExpRecord(subExp.SubExpressionId, subExp.ExpressionId, filteredSubExpressions[subExpIndex-1],filteredSubExpressions.length==(subExpIndex+1))">
+                                      <i class="fa fa-window-close"></i>
+                                    </span>
+                                    <span>
+                                      <select class="form-control" [ngModel]="subExp.RightOpTypeId"
+                                              [ngModelOptions]="{standalone: true}"
+                                              (change)="onSubExpOperandTypeChange($event, subExp.SubExpressionId, subExp.ExpressionId)">
+                                        <ng-container *ngFor="let opType of this.operandTypeList">
+                                          <option *ngIf="opType.OperandTypeId != operandTypeConst.Query && (opType.OperandTypeId != operandTypeConst.Function || isFunctionOperandAllowed(actionExp.LeftOperandFieldDetail.DataTypeId)==true)"
+                                                  [value]="opType.OperandTypeId">
+                                            {{opType.Description}}
+                                          </option>
+                                        </ng-container>
+                                      </select>
+                                    </span>
+                                    <span *ngIf="actionExp.LeftOperandFieldDetail && actionExp.LeftOperandFieldDetail.FieldId > 0 && subExp.RightOpTypeId == operandTypeConst.Value">
+                                      <input *ngIf="isMasterSourceDataAllowed(actionExp.LeftSubEntityDetail.SubEntityId,actionExp.LeftOperandFieldDetail.FieldId) == false"
+                                             type="text" class="form-control" [value]="subExp.RightOpValue"
+                                             (focusout)="onSubExpRightOpFocusOut($event,subExp.SubExpressionId)"
+                                             placeholder="Enter value">
+
+                                      <ng-container *ngIf="isMasterSourceDataAllowed(actionExp.LeftSubEntityDetail.SubEntityId,actionExp.LeftOperandFieldDetail.FieldId) == true">
+                                        <dx-select-box [dataSource]="masterDataListForField[actionExp.LeftOperandFieldDetail.FieldId]"
+                                                       [searchEnabled]="true" [value]="subExp.RightOpValue" displayExpr="Description"
+                                                       valueExpr="Code" placeholder="Select Value" [showClearButton]="false"
+                                                       (onValueChanged)="onSubExpRightOpFocusOut($event.value,subExp.SubExpressionId)"
+                                                       [elementAttr]="dxSelectCustomAttr">
+                                          <div *dxTemplate="let data of 'dropDownButton'">
+
+                                          </div>
+                                        </dx-select-box>
+
+                                      </ng-container>
+                                    </span>
+                                    <span *ngIf="subExp.RightOpTypeId== operandTypeConst.Reference">
+
+                                      <dx-select-box [dataSource]="sourceSubEntityList" [searchEnabled]="true"
+                                                     [value]="subExp.RightSubEntityDetail?subExp.RightSubEntityDetail.SubEntityId:''"
+                                                     displayExpr="DisplayName" valueExpr="SubEntityId" placeholder="Select Entity"
+                                                     [showClearButton]="false"
+                                                     (onValueChanged)="onSubExpRightEntitySelected($event.value,subExp.SubExpressionId)"
+                                                     [elementAttr]="dxSelectCustomAttr">
+                                        <div *dxTemplate="let data of 'dropDownButton'">
+
+                                        </div>
+                                      </dx-select-box>
+                                    </span>
+                                    <span *ngIf="subExp.RightSubEntityDetail && actionExp.LeftOperandFieldDetail && actionExp.LeftOperandFieldDetail.FieldId > 0 && subExp.RightOpTypeId== operandTypeConst.Reference">
+                                      <dx-select-box [dataSource]="fieldListForEntity[subExp.RightSubEntityDetail.SubEntityId]"
+                                                     [searchEnabled]="true"
+                                                     [value]="subExp.RightOperandFieldDetail?subExp.RightOperandFieldDetail.FieldId:''"
+                                                     displayExpr="DisplayName" valueExpr="FieldId" placeholder="Select Entity"
+                                                     [showClearButton]="false"
+                                                     (onValueChanged)="onSubExpRightFieldSelected($event.value,subExp.SubExpressionId)"
+                                                     [elementAttr]="dxSelectCustomAttr">
+                                        <div *dxTemplate="let data of 'dropDownButton'">
+
+                                        </div>
+                                      </dx-select-box>
+                                    </span>
+                                    <span *ngIf="actionExp.LeftOperandFieldDetail && actionExp.LeftOperandFieldDetail.FieldId > 0 && subExp.RightOpTypeId== operandTypeConst.Function">
+                                      <dx-select-box [dataSource]="getFunctionListForDataType(actionExp.LeftOperandFieldDetail.DataTypeId,false, false)"
+                                                     [searchEnabled]="true"
+                                                     [value]="subExp.RightOpFunctionDetail?subExp.RightOpFunctionDetail.FunctionId:''"
+                                                     displayExpr="FunctionName" valueExpr="FunctionId" placeholder="Select Function"
+                                                     [showClearButton]="false"
+                                                     (onValueChanged)="onSubExpFunctionSelected($event.value,subExp.SubExpressionId, subExp.ExpressionId)"
+                                                     [elementAttr]="dxSelectCustomAttr">
+                                        <div *dxTemplate="let data of 'dropDownButton'">
+
+                                        </div>
+                                      </dx-select-box>
+                                    </span>
+                                    <span *ngIf="subExp.RightOpTypeId!=undefined && actionExp.RightOpTypeId != operandTypeConst.Function">
+                                      <select class="form-control oprator"
+                                              [ngModel]="subExp.AssignmentOperatorDetail?subExp.AssignmentOperatorDetail.OperatorId:''"
+                                              [ngModelOptions]="{standalone: true}"
+                                              (change)="onSubExpAssignmentOperatorChange($event, subExp.ExpressionId,subExp.SubExpressionId)">
+                                        <option value="" selected hidden>+</option>
+                                        <option *ngFor="let operator of assignmentOperatorList"
+                                                [value]="operator.OperatorId">
+                                          {{operator.Name}}
+                                        </option>
+                                      </select>
+                                    </span>
+                                    <span *ngIf="actionExp.RightOpTypeId!=undefined && actionExp.RightOpTypeId == operandTypeConst.Function && filteredSubExpressions.length==(subExpIndex+1)">
+                                      <button type="button" class="addaction"
+                                              (click)="generateNewActionSubExpression(subExp.ExpressionId)"
+                                              data-placement="right" tooltip="Add Parameter">
+                                        +
+                                      </button>
+                                    </span>
+                                  </div>
+                                </div>
+                              </ng-container>
+                            </ng-container>
+                          </div>
+                        </ng-container>
+                        <div class="editrow"
+                             *ngIf="(ruleSetDetail.RuleExecutionTypeDetail && ruleSetDetail.RuleExecutionTypeDetail.ExecutionTypeId == 2) || getActionList(rule.RuleId).length==0">
+                          <span>
+                            <button type="button" class="addaction" (click)="generateNewRuleRecordAction(rule.RuleId)"
+                                    data-placement="right" tooltip="Add Action Set">
+                              Add Action Set
+                            </button>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    
+
+                  </div>
+                  <div class="row pt-2">
+                    <div class="col-md-6">
+                      <ng-container *ngIf="ruleList && ruleList.length>1">
+
+                        <button type="button" class="btn btn-primary" (click)="generateNewRuleRecord()">
+
+                          Add Block
+                        </button>
+                      </ng-container>
+                    </div>
+                    <div class="col-md-6">
+                      <button type="button" class="btn btn-secondary float-end" (click)="CloseButtonClicked()">Close</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+        </form>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+
+<ng-template #rangeTemplate let-value="value">
+  <span>
+    <input type="text" class="form-control" placeholder="Enter From value">
+  </span>
+  <span>
+    <input type="text" class="form-control" placeholder="Enter To value">
+  </span>
+</ng-template>
+<ng-template #normalTemplate>
+  <span>
+    <input type="text" class="form-control" placeholder="Enter value">
+  </span>
+</ng-template>
+
+<dx-popup *ngIf="isQueryEditorVisible  && isQueryEditorVisible == true" [width]="600" [height]="450" [showTitle]="true"
+          title="Edit Query" [dragEnabled]="false" [hideOnOutsideClick]="false" [(visible)]="isQueryEditorVisible">
+  <dxo-animation [hide]="{ type: 'slideOut', direction: 'right', duration: 250 }"
+                 [show]="{ type: 'slideIn', direction: 'right', duration: 250 }">
+  </dxo-animation>
+  <div class="rulespopuform">
+    <form class="" (ngSubmit)="onQuerySave()">
+      <div class="row" style="position: relative;">
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="email">Select Database<span class="required">*</span></label>
+            <dx-select-box [dataSource]="queryDatabaseList" [searchEnabled]="true" displayExpr="DatabaseName"
+                           valueExpr="DatabaseId" [value]="selectedDatabaseDetail?selectedDatabaseDetail.DatabaseId:''"
+                           placeholder="Database" [showClearButton]="true"
+                           (onSelectionChanged)="onQueryDatabaseSelectionChange($event)">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Database is required"></dxi-validation-rule>
+                <dxi-validation-rule type="range" [min]="1" message="Database is required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-select-box>
+          </div>
+        </div>
+        <div class="col-md-12">
+          <div class="form-group">
+            <label for="email">Query Text</label>
+            <dx-text-area [(value)]="selectedExpressionQuery" placeholder="Value" [height]="100">
+              <dx-validator>
+                <dxi-validation-rule type="required" message="Required"></dxi-validation-rule>
+              </dx-validator>
+            </dx-text-area>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+
+        </div>
+        <div class="col-md-6">
+          <dx-button type="button" class="reset btn btn-default" (click)="hideQueryEditor()">Cancel</dx-button>
+          <dx-button type="button" class="submit btn btn-default" [useSubmitBehavior]="true">
+            Save Query
+          </dx-button>
+
+        </div>
+      </div>
+    </form>
+  </div>
+</dx-popup>

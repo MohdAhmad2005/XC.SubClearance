@@ -1,0 +1,16 @@
+<ng-container [ngSwitch]="controlType.control">
+    <!-- <form #itemForm="ngForm"> -->
+    <input type="text" *ngSwitchCase="'textbox'" (blur)="onchange(controls, controlType)" [attr.readonly]="controlType.key ==='confidance' ? '':null" name="units-{{index}}" ngModel [required]="controlType.required" class="form-control" [(ngModel)]="controls[controlType.key]" />
+    <div class="input-group" *ngSwitchCase="'datepicker'">
+      <input class="form-control ngb-datepicker" type="text" #d="bsDatepicker" ngModel name="controlType.key"
+             [required]="controlType.required" placeholder="dd/mm/yyyy" [(ngModel)]="controls[controlType.key]" [(bsValue)]="controls[controlType.key]"
+             bsDatepicker (blur)="onDateChange(controls, controlType)" [bsConfig]="{dateInputFormat: 'DD/MM/YYYY', showWeekNumbers: false}">
+    </div>
+    <select *ngSwitchCase="'dropdown'"  name="controlType.key" ngModel [required]="controlType.required" (change)="onChangeSuggetions(controls)" class="form-select field-md" name="controls.suggestions.id"
+        [(ngModel)]="controls[controlType.key]['id']">
+        <option disabled selected value>Select</option>
+        <option *ngFor="let data of controls.suggestions.suggestionOptions" [ngValue]="data.id">{{data.name}}</option>
+    </select>
+    <label *ngSwitchCase="'label'">{{controls.fields}}<span *ngIf="controlType.required" class="text-danger">*</span></label>
+<!-- </form> -->
+</ng-container>

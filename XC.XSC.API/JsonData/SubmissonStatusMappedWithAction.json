@@ -1,0 +1,537 @@
+[
+  {
+    "id": "xceedance",
+    "tenantName": "xceedance",
+    "roleMappedWithAction": [
+      {
+        "roleId": "XXX-xxx-xxx",
+        "roleName": "Processor",
+        "allowedActions": [
+          "Edit",
+          "View",
+          "Play",
+          "Audit History",
+          "Pause",
+          "Under Query",
+          "Send Back to Queue",
+          "TAT Ageing"
+
+        ]
+      },
+      {
+        "roleId": "XXX-xxx-xxx",
+        "roleName": "Reviewer",
+        "allowedActions": [
+          "View",
+          "Edit",
+          "Play",
+          "Pause",
+          "Audit History",
+          "TAT Ageing"
+        ]
+      },
+      {
+        "roleId": "XXX-xxx-xxx",
+        "roleName": "Allocator",
+        "allowedActions": [
+          "Audit History",
+          "Re-Allocation",
+          "TAT Ageing",
+          "View"
+        ]
+      }
+    ],
+    "notAssignedSubmissionActions": {
+      "allowedActions": [
+        {
+          "lableName": "View",
+          "url": "../SubmissionMember",
+          "className": "fa fa-eye",
+          "formName": "",
+          "actionType": "ViewSubmission"
+        },
+        {
+          "lableName": "TAT Ageing",
+          "url": "",
+          "className": "fa fa-hourglass",
+          "formName": "",
+          "actionType": "TatMetrices"
+        },
+        {
+          "lableName": "Audit History",
+          "url": "",
+          "className": "fa fa-history",
+          "formName": "",
+          "actionType": "AuditHistory"
+        }
+      ]
+    },
+    "submissionStatusMappedAction": [
+      {
+        "statusId": 1,
+        "statusName": "NotAssignedYet",
+        "allowedActions": [
+          {
+            "lableName": "View",
+            "url": "../SubmissionMember",
+            "className": "fa fa-eye",
+            "formName": "",
+            "actionType": "ViewSubmission"
+
+          },
+          {
+            "lableName": "Audit History",
+            "url": "",
+            "className": "fa fa-history",
+            "formName": "",
+            "actionType": "AuditHistory"
+          },
+          {
+            "lableName": "TAT Ageing",
+            "url": "",
+            "className": "fa fa-hourglass",
+            "formName": "",
+            "actionType": "TatMetrices"
+          },
+          {
+            "lableName": "Assign to Myself",
+            "url": "",
+            "className": "fa fa-street-view",
+            "formName": "",
+            "actionType": "AssignToSelf"
+          }
+
+        ]
+      },
+      {
+        "statusId": 2,
+        "statusName": "NotStarted",
+        "allowedActions": [
+          {
+            "lableName": "View",
+            "url": "../SubmissionMember",
+            "className": "fa fa-eye",
+            "formName": "",
+            "actionType": "ViewSubmission"
+          },
+          {
+            "lableName": "Play",
+            "url": "",
+            "className": "fa fa-play",
+            "formName": "",
+            "actionType": "Play"
+          },
+          {
+            "lableName": "Send Back to Queue",
+            "url": "",
+            "className": "fa fa-arrow-right ",
+            "formName": "",
+            "actionType": "SendBackToQueue"
+          },
+          {
+            "lableName": "TAT Ageing",
+            "url": "",
+            "className": "fa fa-hourglass",
+            "formName": "",
+            "actionType": "TatMetrices"
+          },
+          {
+            "lableName": "Audit History",
+            "url": "",
+            "className": "fa fa-history",
+            "formName": "",
+            "actionType": "AuditHistory"
+          },
+          {
+            "lableName": "Re-Allocation",
+            "url": "",
+            "className": "fa fa-link",
+            "formName": "",
+            "actionType": "ReAllocation"
+          }
+        ]
+      },
+      {
+        "statusId": 3,
+        "statusName": "InProgress(Play)",
+        "allowedActions": [
+          {
+            "lableName": "View",
+            "url": "../SubmissionMember",
+            "className": "fa fa-eye",
+            "formName": "",
+            "actionType": "ViewSubmission"
+          },
+          {
+            "lableName": "Edit",
+            "url": "../SubmissionMember",
+            "className": "fa fa-edit",
+            "formName": "",
+            "actionType": "EditSubmission"
+          },
+          {
+            "lableName": "Pause",
+            "url": "",
+            "className": "fa fa-pause",
+            "formName": "",
+            "actionType": "Pause"
+          },
+          {
+            "lableName": "TAT Ageing",
+            "url": "",
+            "className": "fa fa-hourglass",
+            "formName": "",
+            "actionType": "TatMetrices"
+          },
+          {
+            "lableName": "Audit History",
+            "url": "",
+            "className": "fa fa-history",
+            "formName": "",
+            "actionType": "AuditHistory"
+          },
+          {
+            "lableName": "Under Query",
+            "url": "",
+            "className": "fa fa-question",
+            "formName": "",
+            "actionType": "UnderQuery"
+          }
+        ]
+      },
+      {
+        "statusId": 4,
+        "statusName": "InProgress(Paused)",
+        "allowedActions": [
+          {
+            "lableName": "View",
+            "url": "../SubmissionMember",
+            "className": "fa fa-eye",
+            "formName": "",
+            "actionType": "ViewSubmission"
+          },
+          {
+            "lableName": "Play",
+            "url": "",
+            "className": "fa fa-play",
+            "formName": "",
+            "actionType": "Play"
+          },
+          {
+            "lableName": "Under Query",
+            "url": "",
+            "className": "fa fa-question",
+            "formName": "",
+            "actionType": "UnderQuery"
+          },
+          {
+            "lableName": "Audit History",
+            "url": "",
+            "className": "fa fa-history",
+            "formName": "",
+            "actionType": "AuditHistory"
+          },
+          {
+            "lableName": "TAT Ageing",
+            "url": "",
+            "className": "fa fa-hourglass",
+            "formName": "",
+            "actionType": "TatMetrices"
+          },
+          {
+            "lableName": "Send Back to Queue",
+            "url": "",
+            "className": "fa fa-arrow-right ",
+            "formName": "",
+            "actionType": "SendBackToQueue"
+          },
+          {
+            "lableName": "Re-Allocation",
+            "url": "",
+            "className": "fa fa-link",
+            "formName": "",
+            "actionType": "ReAllocation"
+          }
+
+        ]
+      },
+      {
+        "statusId": 5,
+        "statusName": "UnderQuery",
+        "allowedActions": [
+          {
+            "lableName": "TAT Ageing",
+            "url": "",
+            "className": "fa fa-hourglass",
+            "formName": "",
+            "actionType": "TatMetrices"
+          },
+          {
+            "lableName": "Audit History",
+            "url": "",
+            "className": "fa fa-history",
+            "formName": "",
+            "actionType": "AuditHistory"
+          },
+          {
+            "lableName": "View",
+            "url": "../SubmissionMember",
+            "className": "fa fa-eye",
+            "formName": "",
+            "actionType": "ViewSubmission"
+          },
+          {
+            "lableName": "Play",
+            "url": "",
+            "className": "fa fa-play",
+            "formName": "",
+            "actionType": "Play"
+          },
+          {
+            "lableName": "Re-Allocation",
+            "url": "",
+            "className": "fa fa-link",
+            "formName": "",
+            "actionType": "ReAllocation"
+          }
+
+        ]
+      },
+      {
+        "statusId": 6,
+        "statusName": "ReviewPending",
+        "allowedActions": [
+          {
+            "lableName": "View",
+            "url": "../SubmissionMember",
+            "className": "fa fa-eye",
+            "formName": "",
+            "actionType": "ViewSubmission"
+          },
+          {
+            "lableName": "Play",
+            "url": "",
+            "className": "fa fa-play",
+            "formName": "",
+            "actionType": "Play"
+          },
+          {
+            "lableName": "Audit History",
+            "url": "",
+            "className": "fa fa-history",
+            "formName": "",
+            "actionType": "AuditHistory"
+          },
+          {
+            "lableName": "TAT Ageing",
+            "url": "",
+            "className": "fa fa-hourglass",
+            "formName": "",
+            "actionType": "TatMetrices"
+          }
+        ]
+      },
+      {
+        "statusId": 7,
+        "statusName": "UnderReview(Play)",
+        "allowedActions": [
+          {
+            "lableName": "View",
+            "url": "../SubmissionMember",
+            "className": "fa fa-eye",
+            "formName": "",
+            "actionType": "ViewSubmission"
+          },
+          {
+            "lableName": "Edit",
+            "url": "../SubmissionMember",
+            "className": "fa fa-edit",
+            "formName": "",
+            "actionType": "EditSubmission"
+          },
+          {
+            "lableName": "Pause",
+            "url": "",
+            "className": "fa fa-pause",
+            "formName": "",
+            "actionType": "Pause"
+          },
+          {
+            "lableName": "TAT Ageing",
+            "url": "",
+            "className": "fa fa-hourglass",
+            "formName": "",
+            "actionType": "TatMetrices"
+          },
+          {
+            "lableName": "Audit History",
+            "url": "",
+            "className": "fa fa-history",
+            "formName": "",
+            "actionType": "AuditHistory"
+          }
+
+        ]
+      },
+      {
+        "statusId": 8,
+        "statusName": "UnderReview(Paused)",
+        "allowedActions": [
+          {
+            "lableName": "View",
+            "url": "../SubmissionMember",
+            "className": "fa fa-eye",
+            "formName": "",
+            "actionType": "ViewSubmission"
+          },
+          {
+            "lableName": "Play",
+            "url": "",
+            "className": "fa fa-play",
+            "formName": "",
+            "actionType": "Play"
+          },
+          {
+            "lableName": "TAT Ageing",
+            "url": "",
+            "className": "fa fa-hourglass",
+            "formName": "",
+            "actionType": "TatMetrices"
+          },
+          {
+            "lableName": "Audit History",
+            "url": "",
+            "className": "fa fa-history",
+            "formName": "",
+            "actionType": "AuditHistory"
+          }
+
+        ]
+      },
+      {
+        "statusId": 9,
+        "statusName": "ReviewFail",
+        "allowedActions": [
+          {
+            "lableName": "View",
+            "url": "../SubmissionMember",
+            "className": "fa fa-eye",
+            "formName": "",
+            "actionType": "ViewSubmission"
+          },
+          {
+            "lableName": "Under Query",
+            "url": "",
+            "className": "fa fa-question",
+            "formName": "",
+            "actionType": "UnderQuery"
+          },
+          {
+            "lableName": "Play",
+            "url": "",
+            "className": "fa fa-play",
+            "formName": "",
+            "actionType": "Play"
+          },
+          {
+            "lableName": "Audit History",
+            "url": "",
+            "className": "fa fa-history",
+            "formName": "",
+            "actionType": "AuditHistory"
+          },
+          {
+            "lableName": "TAT Ageing",
+            "url": "",
+            "className": "fa fa-hourglass",
+            "formName": "",
+            "actionType": "TatMetrices"
+          },
+          {
+            "lableName": "Re-Allocation",
+            "url": "",
+            "className": "fa fa-link",
+            "formName": "",
+            "actionType": "ReAllocation"
+          }
+        ]
+      },
+      {
+        "statusId": 10,
+        "statusName": "ReviewPass",
+        "allowedActions": [
+          {
+            "lableName": "View",
+            "url": "../SubmissionMember",
+            "className": "fa fa-eye",
+            "formName": "",
+            "actionType": "ViewSubmission"
+          },
+          {
+            "lableName": "Play",
+            "url": "",
+            "className": "fa fa-play",
+            "formName": "",
+            "actionType": "ViewSubmission"
+          },
+          {
+            "lableName": "Under Query",
+            "url": "",
+            "className": "fa fa-question",
+            "formName": "",
+            "actionType": "UnderQuery"
+          },
+          {
+            "lableName": "Audit History",
+            "url": "",
+            "className": "fa fa-history",
+            "formName": "",
+            "actionType": "AuditHistory"
+          },
+          {
+            "lableName": "TAT Ageing",
+            "url": "",
+            "className": "fa fa-hourglass",
+            "formName": "",
+            "actionType": "TatMetrices"
+          },
+          {
+            "lableName": "Re-Allocation",
+            "url": "",
+            "className": "fa fa-link",
+            "formName": "",
+            "actionType": "ReAllocation"
+          }
+
+        ]
+      },
+      {
+        "statusId": 11,
+        "statusName": "SubmittedToPAS",
+        "allowedActions": [
+          {
+            "lableName": "View",
+            "url": "../SubmissionMember",
+            "className": "fa fa-eye",
+            "formName": "",
+            "actionType": "ViewSubmission"
+          },
+          {
+            "lableName": "TAT Ageing",
+            "url": "",
+            "className": "fa fa-hourglass",
+            "formName": "",
+            "actionType": "TatMetrices"
+          },
+          {
+            "lableName": "Audit History",
+            "url": "",
+            "className": "fa fa-history",
+            "formName": "",
+            "actionType": "AuditHistory"
+          }
+        ]
+      }
+    ]
+  }
+]

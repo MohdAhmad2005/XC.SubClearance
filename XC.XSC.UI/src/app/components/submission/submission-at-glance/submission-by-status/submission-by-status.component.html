@@ -1,0 +1,26 @@
+ <div class="row">
+    <div class="col-md-12">
+        <div class="row" *ngIf="submissionsByStatus?.length > 0">
+            <div class="col-md-3" *ngFor="let item of submissionsByStatus">
+                <div class="card mb-2">
+                    <div class="card-body db-box">
+                        <div class="d-flex align-items-center" (click) = "openSubmission(item.id)">
+                            <div class="icon-box">
+                                <span class="material-icons-outlined">
+                                    assignment
+                                </span>
+                            </div>  
+                            <div>
+                                <h4 class="mb-0 position-relative">{{item.statusCount}}
+                                    <span class="text-black ps-2">                                        
+                                            {{item.label}}                                        
+                                    </span>
+                                </h4>              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>                      
+</div>

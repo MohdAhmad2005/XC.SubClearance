@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+  xc.xsc.api:
+    image: crcindtud01.azurecr.io/smartclear-api-dev
+    #image: ${DOCKER_REGISTRY-}smartclear-api-dev
+    build:
+      context: .
+      dockerfile: XC.XSC.API/Dockerfile

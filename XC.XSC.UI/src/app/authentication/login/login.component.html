@@ -1,0 +1,72 @@
+<div class="main-wrapper">
+
+  <div class="row login-page6">
+    <div class="col-md-5 col-sm-12 full-height">
+      <form class="login-form needs-validation" id="login-form"
+            [formGroup]="loginForm" autocomplete="off" novalidate
+            (ngSubmit)="loginUser(loginForm.value)"
+            *ngIf="getActivateArea('LOGIN')">
+
+        <div class="form-header text-center">
+          <img src="../assets/css/images/logo.png" class="form-logo" alt="logo" />
+        </div>
+        <div class="mx-5 mb-5">
+        </div>
+
+        <div class="form-group">
+          <alert-message #alertMessage [fade]="true"></alert-message>
+        </div>
+
+        <div class="form-group">
+          <i class="fa fa-user"></i>
+          <input class="form-control" type="email"
+                 id="userEmail" formControlName="userEmail" name="userEmail" placeholder="Username">
+
+          <div class="text-danger"
+               *ngIf="emailid['userEmail'].errors?.['email'] && emailid['userEmail'].dirty">
+            Please enter a valid email
+          </div>
+        </div>
+
+        <div class="form-group">
+          <i class="fa fa-lock"></i>
+          <input class="form-control" type="password"
+                 id="password" formControlName="password" name="password" placeholder="Password" required>
+        </div>
+
+        <div class="d-flex">
+          <div class="col-md-6 col-sm-12">
+            <div class="d-flex">
+              <label class="custom-checkbox">
+                <input type="checkbox" (change)="rememberMe($event)" value="1" [checked]="isChecked">
+                <span></span>
+                Remember me
+              </label>
+
+            </div>
+
+          </div>
+          <div class="col-md-6 col-sm-12 text-end">
+            <a class="txt1" href="javascript:void(0)" id="to-recover" (click)="setActivateArea('RECOVERPWD')">
+              Forgot Password?
+            </a>
+          </div>
+        </div>
+
+
+        <div class="pos-relative ">
+          <a class="btn btn-primary login-btn" [style]="disableStyle">
+            <button class="btn btn-primary login-btn" type="submit" [disabled]="isLoginRequest">
+              Sign In
+            </button>
+          </a>
+        </div>
+      </form>
+
+      <app-recover-password #recoverPassword *ngIf="getActivateArea('RECOVERPWD')" style="width: 100%;"
+                            [recoveryEmailId]="loginForm.value.userEmail" (onBackToSignInClick)="onChildNavigation($event)">
+      </app-recover-password>
+    </div>
+
+  </div>
+</div>

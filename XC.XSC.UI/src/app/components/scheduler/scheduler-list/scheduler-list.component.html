@@ -1,0 +1,86 @@
+<div class="card">
+    <div class="d-flex flex-wrap card-header">
+        <h4 class="card-title mb-0">Scheduler Management</h4>
+        <button class="btn btn-sm btn-primary" (click)="openPopUp()">Add Scheduler</button>
+    </div>
+    <div class="card-body">
+            <div class="row">
+                <div class="col-md-12 mt-2">
+                    <div class="table-wrapper table-responsive datatablesearch">
+                        <table id="custom-table" class="table table-hover custom-table">
+                            <thead>
+                                <tr>
+                                    <th>Region</th>
+                                    <th>Team</th>
+                                    <th>LOB</th>
+                                    <th>Mailbox</th>
+                                    <th>Frequency</th>
+                                    <th>Updated By</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>North America</td>
+                                    <td>Submission</td>
+                                    <td>Property</td>
+                                    <td> </td>
+                                    <td>10Hrs 12Min</td>
+                                    <td>Mitali</td>
+                                    <td>
+                                        <div class="d-flex justify-content-evenly">
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm dropdown-toggle btn-drop" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa fa-bars"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" onclick="editteamlist();"><i class="fa fa-edit"></i> Edit</a></li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="checkbox-switch">
+                                                <input type="checkbox" checked  value="1" name="status" class="input-checkbox" id="toolbar-active">
+                                                <div class="checkbox-animate">
+                                                    <span class="checkbox-off">In-Active</span>
+                                                    <span class="checkbox-on">Active</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>North America</td>
+                                    <td>Submission</td>
+                                    <td>Property</td>
+                                    <td> </td>
+                                    <td>10Hrs 12Min</td>
+                                    <td>Mitali</td>
+                                    <td>
+                                        <div class="d-flex justify-content-evenly">
+                                            <div class="btn-group">
+                                                <button class="btn btn-sm dropdown-toggle btn-drop" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="fa fa-bars"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" onclick="editteamlist();"><i class="fa fa-edit"></i> Edit</a></li>
+                                                </ul>
+                                            </div>
+                                            
+                                            <div class="checkbox-switch">
+                                                <input type="checkbox" checked  value="1" name="status" class="input-checkbox" id="toolbar-active">
+                                                <div class="checkbox-animate">
+                                                    <span class="checkbox-off">In-Active</span>
+                                                    <span class="checkbox-on">Active</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                       
+                </div>
+            </div>
+    </div>
+</div>

@@ -1,0 +1,181 @@
+{
+	"schedulerForm": [{
+			"key": "region",
+			"label": "Region",
+			"type": "dropdown",
+			"controlType": "dropdown",
+			"dropDownUri": null,
+			"validations": [{
+				"name": "required",
+				"validator": "Validators.required",
+				"message": "Region is required"
+			}],
+			"readOnly": false,
+			"active": true,
+			"value": null,
+			"required": null,
+			"order": 4.0,
+			"options": [{
+					"id": "Submission",
+					"name": "Submission"
+				},
+				{
+					"id": "Rating",
+					"name": "Rating"
+				},
+				{
+					"id": "Quote",
+					"name": "Quote"
+				},
+				{
+					"id": "Cat Modeling",
+					"name": "Cat Modeling"
+				}
+			],
+			"processVariable": false
+		},
+		{
+			"key": "team",
+			"label": "Team",
+			"type": "dropdown",
+			"controlType": "dropdown",
+			"dropDownUri": null,
+			"validations": [{
+				"name": "required",
+				"validator": "Validators.required",
+				"message": "Team is required"
+			}],
+			"readOnly": false,
+			"active": true,
+			"value": null,
+			"required": null,
+			"order": 4.0,
+			"options": [{
+					"id": "1",
+					"name": "Submission"
+				}
+
+			],
+			"processVariable": false
+		},
+		{
+			"key": "lob",
+			"label": "LOB",
+			"type": "dropdown",
+			"controlType": "dropdown",
+			"dropDownUri": null,
+			"validations": [{
+				"name": "required",
+				"validator": "Validators.required",
+				"message": "Lob is required"
+			}],
+			"readOnly": false,
+			"active": true,
+			"value": null,
+			"required": null,
+			"order": 4.0,
+			"options": [{
+					"id": "1",
+					"name": "Property"
+				},
+				{
+					"id": "2",
+					"name": "Liabllity"
+				}
+
+			],
+			"processVariable": false
+		},
+		{
+			"key": "mailBox",
+			"label": "MailBox",
+			"type": "dropdown",
+			"controlType": "dropdown",
+			"dropDownUri": null,
+			"validations": [{
+				"name": "required",
+				"validator": "Validators.required",
+				"message": "MailBox is required"
+			}],
+			"readOnly": false,
+			"active": true,
+			"value": null,
+			"required": null,
+			"order": 4.0,
+			"options": [{
+					"id": "1",
+					"name": "Property"
+				},
+				{
+					"id": "2",
+					"name": "Liabllity"
+				}
+
+			],
+			"processVariable": false
+		},
+		{
+			"key": "frequency",
+			"label": "Frequency",
+			"type": "dropdown",
+			"controlType": "dropdown",
+			"dropDownUri": null,
+			"validations": [{
+				"name": "required",
+				"validator": "Validators.required",
+				"message": "Frequency is required"
+			}],
+			"readOnly": false,
+			"active": true,
+			"value": null,
+			"required": null,
+			"order": 4.0,
+			"options": [{
+					"id": "Hours",
+					"name": "In Hours"
+				},
+				{
+					"id": "Minutes",
+					"name": "In Minutes"
+				}
+
+			],
+			"processVariable": false
+		},
+		{
+			"key": "frequencyOccurrence",
+			"label": "Frequency Occurrence",
+			"type": "dropdown",
+			"controlType": "dropdown",
+			"dropDownUri": null,
+			"validations": [{
+				"name": "required",
+				"validator": "Validators.required",
+				"message": "Occurrence is required"
+			}],
+			"readOnly": false,
+			"active": true,
+			"value": null,
+			"required": null,
+			"order": 4.0,
+			"options": [{
+					"id": "0",
+					"name": "0"
+				},
+				{
+					"id": "5",
+					"name": "5"
+				},
+				{
+					"id": "10",
+					"name": "10"
+				},
+				{
+					"id": "15",
+					"name": "1"
+				}
+			],
+			"processVariable": false
+		}
+	]
+}

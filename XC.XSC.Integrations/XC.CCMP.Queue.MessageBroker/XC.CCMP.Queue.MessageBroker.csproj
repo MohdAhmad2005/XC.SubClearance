@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\XC.XSC.Domain\XC.XSC.ViewModels\XC.XSC.ViewModels.csproj" />
+    <ProjectReference Include="..\XC.CCMP.Queue.MessageAdapter\XC.CCMP.Queue.MessageAdapter.csproj" />
+  </ItemGroup>
+
+</Project>

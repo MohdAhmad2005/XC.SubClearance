@@ -1,0 +1,146 @@
+{
+  "response": [
+    {
+      "pasHeader": "Policy Administration System Information",
+      "reviewHeader": "Review",
+      "generalInfoTableHeader": "Conversation History",
+      "pasResponse": [
+        {
+          "key": "submissionId",
+          "label": "Submission Id",
+          "class": "col-lg-4 mb-3",
+          "controlType": "textbox",
+          "readOnly": true,
+          "active": true,
+          "value": null,
+          "order": 1
+        },
+        {
+          "key": "submitToPASDate",
+          "label": "Submit to PAS Date",
+          "class": "col-lg-4 mb-3",
+          "changeEvent": true,
+          "controlType": "datepicker",
+          "readOnly": true,
+          "active": true,
+          "value": null,
+          "order": 1
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "class": "col-lg-4 mb-3",
+          "changeEvent": true,
+          "controlType": "dropdown",
+          "dropDownUri": "enum/getEnum/GeneralInfoPasStatusType",
+          "readOnly": true,
+          "active": true,
+          "value": null,
+          "order": 1
+        },
+        {
+          "key": "errorMessage",
+          "label": "Error Message",
+          "class": "row mb-3",
+          "controlType": "textarea",
+          "readOnly": true,
+          "active": true,
+          "value": null,
+          "order": 1,
+          "options": []
+        }
+      ],
+      "reviewResponse": [
+        {
+          "key": "processorName",
+          "label": "Processor Name",
+          "class": "col-lg-4 mb-3",
+          "controlType": "textbox",
+          "readOnly": true,
+          "active": true,
+          "value": null,
+          "order": 1
+        },
+        {
+          "key": "receivedDate",
+          "label": "Received Date",
+          "class": "col-lg-4 mb-3",
+          "changeEvent": true,
+          "controlType": "datepicker",
+          "readOnly": true,
+          "active": true,
+          "value": null,
+          "order": 1
+        },
+        {
+          "key": "dueDate",
+          "label": "Due Date",
+          "class": "col-lg-4 mb-3",
+          "changeEvent": true,
+          "controlType": "datepicker",
+          "readOnly": true,
+          "active": true,
+          "value": null,
+          "order": 1
+        },
+        {
+          "key": "reviewerName",
+          "label": "Reviewer Name",
+          "class": "col-lg-4 mb-3",
+          "controlType": "textbox",
+          "readOnly": true,
+          "active": true,
+          "value": null,
+          "order": 1
+        },
+        {
+          "key": "reviewSubmitDate",
+          "label": "Review Submit Date",
+          "class": "col-lg-4 mb-3",
+          "changeEvent": true,
+          "controlType": "datepicker",
+          "readOnly": true,
+          "active": true,
+          "value": null,
+          "order": 1
+        },
+        {
+          "key": "reviewApprovalDate",
+          "label": "Review Approval Date",
+          "class": "col-lg-4 mb-3",
+          "changeEvent": true,
+          "controlType": "datepicker",
+          "readOnly": true,
+          "active": true,
+          "value": null,
+          "order": 1
+        },
+        {
+          "key": "comment",
+          "label": "Comment",
+          "class": "row mb-3",
+          "controlType": "textarea",
+          "readOnly": true,
+          "active": true,
+          "value": null,
+          "maxLength": "500",
+          "order": 1,
+          "options": []
+        },
+        {
+          "key": "reviewStatus",
+          "label": "Review Status",
+          "class": "col-lg-4 mb-3",          
+          "changeEvent": true,
+          "controlType": "dropdown",
+          "dropDownUri": "enum/getEnum/GeneralInfoReviewStatusType",
+          "readOnly": true,
+          "active": true,
+          "value": null,
+          "order": 1
+        }
+      ]
+    }
+  ]
+  
+}

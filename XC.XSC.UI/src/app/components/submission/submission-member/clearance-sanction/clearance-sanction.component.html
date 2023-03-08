@@ -1,0 +1,97 @@
+<div class="tab-pane" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  <!--Clearance & Sanction-->
+  <div class="card">
+    <form (ngSubmit)="addClearanceComment()" [formGroup]="commentsClearanceformGroup">
+      <div class="card-body">
+        <div class="row m-0">
+
+          <div class="card border">
+            <div class="d-flex flex-wrap card-header">
+              <h4 class="card-title mb-0">Business Filters</h4>
+            </div>
+            <div class="card-body">
+              <div class="col-md-12" *ngIf="submissionClearancesResponse?.length > 0 else noData">
+                <div class="row align-items-center mb-3" *ngFor="let item of submissionClearancesResponse">
+                  <div class="col-md-3">
+                    <p class="mb-0" data-bs-toggle="tooltip" title="Registered Broker Firm Check"> {{item.ruleName}}</p>
+                  </div>
+                  <div class="col-md-2">
+                    <p [ngClass]="item.ruleStatus  ? 'mb-0  bg-success text-center text-white' : 'mb-0  bg-danger text-center text-white' ">{{item.ruleStatus ?'PASS':'FAIL'}}</p>
+                  </div>
+                  <div class="col-md-4">
+                    <p class="mb-0">Remarks: <span> {{item.remark}}</span></p>
+                  </div>
+                  <div class="col-md-3">
+                  </div>
+                </div>
+              </div>
+              <ng-template #noData>
+                <div class="col-md-12">
+                  <div class="row align-items-center mb-3">
+                    <div class="col-md-5">
+                      <p class="mb-0  bg-danger text-center text-white">No clearance rule configured.</p>
+                    </div>
+                    <div class="col-md-4">
+                      <p class="mb-0">Remarks: <span>No clearance rule configured. </span></p>
+                    </div>
+                    <div class="col-md-3">
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+
+            </div>
+          </div>
+
+
+          <div class="col-md-12 border bg-light pt-4 pb-0 px-4">
+            <div class="row mb-2">
+              <div class="col-md-12">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" name="clearanceConscent" formControlName="clearanceConscent">
+                  <label class="form-check-label" for="flexCheckDefault">
+                    I have completed sanction screening and the account can be cleared.<span class="text-danger">*</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-2">
+              <label class="col-lg-3">Remarks<span class="text-danger">*</span></label>
+              <div class="col-lg-9">
+                <textarea class="form-control" formControlName="remark" placeholder="Comments"></textarea>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+
+        <div class="row">
+          <div class="d-flex bd-highlight mb-3">
+            <div class="me-auto p-2 bd-highlight">
+              <button [disabled]="commentsClearanceformGroup.invalid" type="button" (click)="SaveExit()" class="btn btn-primary">Save & Exit</button>
+            </div>
+
+
+            <div class="p-2 bd-highlight">
+              <button [disabled]="commentsClearanceformGroup.invalid" class="btn btn-primary nexttab">Save & Next</button>
+            </div>
+
+          </div>
+        </div>
+
+        <div id="displayinfo">
+
+        </div>
+      </div>
+    </form>
+  </div>
+  <!--Clearance & Sanction--> 
+</div>
+<ng-container *ngIf="isConfrimAlertVisible">
+  <confirmation-message [Message]="confirmationMessage" (Accept)="confirmationClick($event)"></confirmation-message>
+</ng-container>
+
+
+
+

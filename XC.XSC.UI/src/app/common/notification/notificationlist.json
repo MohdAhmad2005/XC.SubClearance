@@ -1,0 +1,17 @@
+[
+  {
+    "RouterLink": "SubmissionMember",
+    "Text": "New Submission Added",
+    "NotificationType": ""
+  },
+  {
+    "RouterLink": "ResetPassword",
+    "Text": "Reset Password Page Updated",
+    "NotificationType": ""
+  },
+  {
+    "RouterLink": "MyAccount",
+    "Text": "User Account Updated",
+    "NotificationType": ""
+  }
+]

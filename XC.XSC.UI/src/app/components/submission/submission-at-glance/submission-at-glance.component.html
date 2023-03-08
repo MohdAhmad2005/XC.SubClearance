@@ -1,0 +1,27 @@
+    <div class="row">
+      <div class="d-flex p-0">
+        <div class="me-auto p-2 bd-highlight">
+          <div class="card mb-0 bg-transparent shadow-none">
+            <div class="d-flex flex-wrap card-header px-0 bg-transparent border-bottom-0">
+              <h4 class="card-title mb-0">Submission at a glance</h4>
+            </div>
+          </div>
+        </div>
+        
+        <div class="p-2 bd-highlight">
+          <select class="form-select" (change)="changeRegion($event)" [(ngModel)]="selectedRegion">
+            <option *ngFor="let items of regionList" [value]="items.id">{{items.regionName}}</option>
+          </select>
+        </div>
+        <div class="p-2 bd-highlight">
+          <select class="form-select" (change)="changeLob($event)" [(ngModel)]="selectedLob">
+            <option *ngFor="let items of lobList" [value]="items.id">{{items.name}}</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <app-submission-by-status [submissionsByStatus] = "submissionGlanceList"></app-submission-by-status>
+                
+

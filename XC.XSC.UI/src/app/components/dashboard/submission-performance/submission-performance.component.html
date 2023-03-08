@@ -1,0 +1,26 @@
+<div class="card">
+    <div class="d-flex flex-wrap card-header border-bottom-0 pt-3">
+        <h4 class="card-title mb-0 float-start">Team Performance</h4>
+        <div class="float-end">
+            <div class="input-group">
+                <input type="text" class="form-control daterangepickers bg-transparent" [bsValue]="selectedDateRange"
+                    #d="bsDaterangepicker" bsDaterangepicker
+                     name="selectedDateRange" formControleName="selectedDateRange"
+                    [bsConfig]="bsDateRangeConfig" placeholder="Eg: 20/09/2022 - 30/09/2022" autocomplete="off"
+                    (bsValueChange)="getSubmissionPerformance($event)">
+                <span class="input-group-text bg-white" (click)="d.toggle()"><i class="fa fa-calendar-alt"
+                        for="calandar1"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="card-body pt-1">
+        <div class="col-md-12">
+            <div class="table-wrapper table-responsive">
+                <div class="table table-hover custom-table dashboardtable nowrap">
+                    <generic-static-table [RowData]="performanceData" class="p-0"
+                        [ColumnDefination]="columnDefination" [IsGlobalSearchFilterVisible]="false" [IsActionVisible]="false" [IsNoRecordVisible]="false"></generic-static-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

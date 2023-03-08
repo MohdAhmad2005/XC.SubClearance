@@ -1,0 +1,86 @@
+.rulespopuform{width: 100%;}
+.rulespopuform h3 {
+    font-size: 18px;
+    color: #1b429a;
+    }
+
+.rulespopuform label{ font-size:13px; line-height: 20px; text-align: left; color:#263d89;}
+.rulespopuform dx-select-box, .rulespopuform dx-text-box, .rulespopuform dx-switch {height: calc(1.5em + .75rem + 6px);}
+.rulespopuform dx-text-box:focus, .rulespopuform dx-select-box:focus{box-shadow: none !important; outline: none !important}
+.rulespopuform dx-switch {
+  display: block;
+}
+
+
+.rulespopuform dx-button.reset{
+background: #fff;
+padding:10px 20px;
+text-align: center;
+font-weight: 400 !important;
+font-size: 13px !important;
+border: #eee 1px solid;
+border-radius: 5px;
+margin: 0 10px 0 0px;
+outline: none !important;
+border: none !important;
+box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+}
+.rulespopuform  dx-button.submit{
+background: #263d89;
+color: #fff;
+padding:10px 20px;
+text-align: center;
+font-weight: 400 !important;
+font-size: 13px !important;
+border: #eee 1px solid;
+border-radius: 5px;
+outline: none !important;
+border: none !important;
+box-shadow: 0 .5rem 1rem rgba(0,0,0,.15) !important;
+}
+
+:host ::ng-deep .dx-datagrid-rowsview .dx-row > td {
+    padding: 5px;
+  }
+  
+:host::ng-deep
+    .dx-datagrid-rowsview
+    .dx-select-checkboxes-hidden
+    > tbody
+    > tr
+    > td
+    > .dx-select-checkbox {
+    display: block;
+  }
+  
+:host::ng-deep #ruleListGrid .dx-command-select {
+    width: 40px;
+    min-width: 40px;
+  }
+  
+:host::ng-deep #ruleListGrid .dx-header-row td {
+    color: #222;
+    font-weight: 500;
+    font-size: 13px;
+    background-color: #f1f1f1;
+  }
+  
+:host::ng-deep #ruleListGrid .dx-column-lines {
+    font-size: 12px;
+    color: #222;
+  }
+
+  ::ng-deep .scrolldiv::-webkit-scrollbar {  height: 12px;  width: 5px;  background: #21418a;}
+  ::ng-deep .mainbodyscroll{
+    height: 450px;
+    overflow-y:scroll ;
+    overflow-x:hidden;
+  }
+  ::ng-deep .fix-popupfooter{
+    position: absolute;
+    bottom: 30px;
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin:auto;
+  }

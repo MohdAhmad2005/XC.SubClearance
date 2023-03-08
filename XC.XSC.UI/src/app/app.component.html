@@ -1,0 +1,17 @@
+<div *ngIf="authentication">
+  
+  <app-loader></app-loader>
+  
+  <div class="main-wrapper">
+    <div class="d-flex flex-row">
+      <app-xsc-left-menu></app-xsc-left-menu>
+    </div>
+    <!--Content-->
+    <!--Wrapper-->
+    <div class="wrapper" id="wrapper">
+      <app-xsc-header></app-xsc-header>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <app-xsc-footer></app-xsc-footer>
+</div>

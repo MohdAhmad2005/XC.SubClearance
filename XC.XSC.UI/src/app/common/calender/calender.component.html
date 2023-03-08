@@ -1,0 +1,11 @@
+<!--<div class="input-group">
+  <input class="form-control ngb-datepicker" placeholder="dd/mm/yyyy" [(ngModel)]="BindDate"
+         name="dp" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()" (dateSelect)="ChangeDateEvent($event)" [disabled]="Disabled">
+  <span *ngIf="ShowCalenderIcon" class="input-group-text bg-white" (click)="d.toggle()"><i class="fa fa-calendar-alt" for="calandar1"></i></span>
+</div>-->
+<div class="input-group">
+  <input class="form-control ngb-datepicker" type="text" #d="bsDatepicker"
+         placeholder="dd/mm/yyyy" dateChange="ChangeDateEvent($event)"
+         bsDatepicker>
+  <span *ngIf="ShowCalenderIcon" class="input-group-text bg-white" (click)="d.toggle()"><i class="fa fa-calendar-alt" for="calandar1"></i></span>
+</div>

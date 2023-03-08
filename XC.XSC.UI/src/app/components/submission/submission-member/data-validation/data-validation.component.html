@@ -1,0 +1,113 @@
+<!-- <app-submission-member></app-submission-member> -->
+<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+    <!--data validation-->
+    <div class="card">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card border rounded mailinfo divheight overflow-auto">
+                        <div class="card-body custom-scrollbar">
+                            <div class="card border rounded">
+                                <div class="d-flex flex-wrap card-header bg-primary text-white">
+                                    <h4 class="card-title mb-0">Mail Information</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex bd-highlight">
+                                        <div class="col-md-3 bd-highlight">
+                                            <label class="badge bg-secondary">Subject:</label>
+                                        </div>
+                                        <div class="flex-grow-1 bd-highlight">
+                                            <p class="mb-0">{{emailDetails?.subject}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex bd-highlight">
+                                        <div class="col-md-3 bd-highlight">
+                                            <label class="badge bg-secondary">To:</label>
+                                        </div>
+                                        <div class="flex-grow-1 bd-highlight">
+                                            <p class="mb-0">{{emailDetails?.toEmail}}</p>
+                            
+                                        </div>
+                                    </div>
+                                    <div class="d-flex bd-highlight">
+                                        <div class="col-md-3 bd-highlight">
+                                            <label class="badge bg-secondary">From:</label>
+                                        </div>
+                                        <div class="flex-grow-1 bd-highlight">
+                                            <p class="mb-0">{{emailDetails?.fromEmail}}</p>                            
+                                        </div>
+                                    </div>
+                                    <div class="d-flex bd-highlight">
+                                        <div class="col-md-3 bd-highlight">
+                                            <label class="badge bg-secondary">CC:</label>
+                                        </div>
+                                        <div class="flex-grow-1 bd-highlight">
+                                            <p class="mb-0">{{emailDetails?.ccEmail}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex bd-highlight">
+                                        <div class="col-md-3 bd-highlight">
+                                        </div>
+                                        <div class="flex-grow-1 bd-highlight" *ngIf="emailDetails?.documentId">
+                                            <a (click)="downloadFile(emailDetails?.documentId, emailDetails?.documentId,'message/rfc822')" class="btn btn-primary btn-sm">Download Mail</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card border rounded">
+                                <div class="d-flex flex-wrap card-header bg-primary text-white">
+                                    <h4 class="card-title mb-0">Attachments</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="d-flex bd-highlight"  *ngFor="let item of emailDetails?.attachments">
+                                        <div class="col-md-3 bd-highlight">
+                                            <label class="badge bg-secondary">{{item.fileType}}</label>
+                                        </div>
+                                        <div class="flex-grow-1 bd-highlight">
+                                            <a (click)="downloadFile(item.documentId, item.fileName,'')" class="btn btn-primary btn-sm">{{item.fileName}}</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card border rounded">
+                                <div class="d-flex flex-wrap card-header bg-primary text-white">
+                                    <h4 class="card-title mb-0">Message</h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="border-top d-flex bd-highlight pt-2">
+                                        <div class="col-md-12 bd-highlight">
+                                            <div [innerHTML]="emailDetails?.extractedBodyDetails"></div>                               
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-7">
+                    <div class="card border rounded divheight overflow-auto">
+                        <div class="card-body custom-scrollbar">
+                            <div class="table-wrapper">
+                                <div class="table-responsive">
+                                    <div id="table-scroll" class="table-scroll" *ngIf="submissionData && submissionData.length">
+                                        <submission-details   [rowData]="submissionData" (validityChange)="childFormValid($event)" [formData]="submissionFormData" [submissionId]="submissionId"></submission-details>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="d-flex bd-highlight mb-3">
+                    <div class="me-auto p-2 bd-highlight">
+                        <button type="button" class="btn btn-primary" (click)="save('save')">Save & Exit</button>
+                    </div>
+                    <div class="p-2 bd-highlight">
+                        <button type="button" class="btn btn-primary" (click)="save('submit')">Save & Next</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

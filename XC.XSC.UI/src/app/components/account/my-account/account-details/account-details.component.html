@@ -1,0 +1,30 @@
+<form class="mb-4" [formGroup]="accountDetailForm">
+  <div formGroupName="accountDetails">
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <label>User Id</label>
+        <input type="text" class="form-control" formControlName="userId">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <label>First Name</label>
+        <input type="text" class="form-control" formControlName="firstName">
+      </div>
+      <div class="col-lg-4 mb-4">
+        <label>Last Name</label>
+        <input type="text" class="form-control" formControlName="lastName">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 mb-4">
+        <label>Email Id</label>
+        <input type="text" class="form-control" formControlName="emailId">
+      </div>
+      <div class="col-lg-4 mb-4">
+        <label>Mobile Number</label>
+        <input type="text" class="form-control" formControlName="contactNumber" maxlength="16" NumberOnly>
+      </div>
+    </div>
+  </div>
+</form>

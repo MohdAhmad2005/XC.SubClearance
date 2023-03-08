@@ -1,0 +1,16 @@
+<div class="col-md-12 alert-d-none" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog m-0">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{ModalHeader}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <div class="p-3">
+          <p class="mb-0">{{ModalBody}}</p>
+          <app-legal-entity-list *ngIf="RequestedPage=='Login'" [LegalEntityList]="Data"></app-legal-entity-list>
+        </div>
+      </div>      
+    </div>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+version: '3.4'
+
+services:
+
+  devapp:
+    build: .
+    ports:
+      - 9001:4200
+    volumes:
+      - "/frontend/node_modules"
+      - ".:/frontend"

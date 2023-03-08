@@ -1,0 +1,9 @@
+<div class="border-top col-md-12 pt-3">
+  <div class="table-wrapper">
+    <ng-container>
+      <generic-table [RowData]="tableContent" (LazyLoading)="getTableContent($event)"
+                     [ColumnDefination]="columnDefination" [PageInfo]="pageInfo"  class="p-0" [IsActionVisible]="false"></generic-table>
+    </ng-container>
+  </div>
+</div>
+

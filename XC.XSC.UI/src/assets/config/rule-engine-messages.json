@@ -1,0 +1,1696 @@
+{
+    "ServiceMessages": [
+      {
+        "Key": "SessionExpireMessage",
+        "Message": "Your session is about to expire. Do you want to extend?"
+      },
+      {
+        "Key": "LoginSuccessMessage",
+        "Message": "login Successful!"
+      },
+      {
+        "Key": "StockProrationMessage",
+        "Message": "Stock proration completed successfully."
+      },
+      {
+        "Key": "SelectProrationMessage",
+        "Message": "Please select proration type."
+      },
+      {
+        "Key": "UploadRepository",
+        "Message": "Repositories are uploaded successfully."
+      },
+      {
+        "Key": "ValidateGeoCoordinate",
+        "Message": "Please select any/multiple Geocode Coordinate."
+      },
+      {
+        "Key": "MissingStockProrationColumn",
+        "Message": "StockCoverage column missing in RM Template."
+      },
+      {
+        "Key": "GeocodeNotComplete",
+        "Message": "Geocoding not complete yet."
+      },
+      {
+        "Key": "SuccessVehicleProration",
+        "Message": "Vehicle Proration completed successfully."
+      },
+      {
+        "Key": "StockProrationColumnZero",
+        "Message": "Stock coverage is 0."
+      },
+      {
+        "Key": "InvalidUserMessage",
+        "Message": "Invalid Username/Password"
+      },
+      {
+        "Key": "SelectColumn",
+        "Message": "Select at least one column."
+      },
+      {
+        "Key": "UnableToConnectMessage",
+        "Message": "Unable to connect to service."
+      },
+      {
+        "Key": "LoginSWRMessage",
+        "Message": "Something went wrong. Unable to login."
+      },
+      {
+        "Key": "PasswordChangeMessage",
+        "Message": "Password changed successfully."
+      },
+      {
+        "Key": "PasswordNotMatchedMessage",
+        "Message": "Old Password doesn't match."
+      },
+      {
+        "Key": "PwdSomethingwentwrongMessage",
+        "Message": "Something went wrong. Password not changed."
+      },
+      {
+        "Key": "ErrorMessage",
+        "Message": "Something went wrong!"
+      },
+      {
+        "Key": "ValidateMessage",
+        "Message": "Please enter correct file path."
+      },
+      {
+        "Key": "BlankSheet",
+        "Message": "The sheet does not contain any data."
+      },
+      {
+        "Key": "TryAgainMessage",
+        "Message": "Something went wrong. Please try again later."
+      },
+      {
+        "Key": "RequestIdNotAvailableMessage",
+        "Message": "Request Id is not available. Please navigate through RM Template page."
+      },
+      {
+        "Key": "SelectItemApproveMessage",
+        "Message": "Please select item to approve."
+      },
+      {
+        "Key": "MappingSummaryApproveMessage",
+        "Message": "Mapping summary approved successfully."
+      },
+      {
+        "Key": "SelectItemRejectMessage",
+        "Message": "Please select item to reject."
+      },
+      {
+        "Key": "MappingSummaryRejectMessage",
+        "Message": "Mapping summary rejected successfully."
+      },
+      {
+        "Key": "SelectRecordForGeocodeMessage",
+        "Message": "Please select records for geocoding"
+      },
+      {
+        "Key": "BUMandatoryFieldMessage",
+        "Message": "Please fill at least one account with all mandatory fields."
+      },
+      {
+        "Key": "DataCopyMessage",
+        "Message": "Data copied successfully."
+      },
+      {
+        "Key": "NOSANITYERROR",
+        "Message": "No Sanity Errors found."
+      },
+      {
+        "Key": "QaErrorMessage",
+        "Message": "Please de-select the error below for approving the account."
+      },
+      {
+        "Key": "QaRejectErrorMessage",
+        "Message": "Please select the error below for rejecting the account."
+      },
+      {
+        "Key": "ExterrErrorMessage",
+        "Message": "Please select the error below for submitting the external error form."
+      },
+      {
+        "Key": "DuplicateAccountMessage",
+        "Message": "Duplicate account name is not allowed"
+      },
+      {
+        "Key": "BulkProcessInitMessage",
+        "Message": "Bulk process initiated successfully"
+      },
+      {
+        "Key": "EnterCommentMessage",
+        "Message": "Please enter some comments."
+      },
+      {
+        "Key": "EnterSubjectMessage",
+        "Message": "Please enter subject."
+      },
+      {
+        "Key": "EnterEmailMessage",
+        "Message": "Please enter email address in To List."
+      },
+      {
+        "Key": "EnterEmailCCMessage",
+        "Message": "Please enter email address in CC List."
+      },
+      {
+        "Key": "AccCancelMessage",
+        "Message": "Account has been cancelled."
+      },
+      {
+        "Key": "ValidEmailMessage",
+        "Message": "Please enter a valid email address."
+      },
+      {
+        "Key": "EnterEmailContentMessage",
+        "Message": "Please enter email content."
+      },
+      {
+        "Key": "AccCompletedMessage",
+        "Message": "Account has been completed."
+      },
+      {
+        "Key": "UnableFetchDataMessage",
+        "Message": "Unable to fetch process data."
+      },
+      {
+        "Key": "CleansingQCCompletedMessage",
+        "Message": "Cleansing QC is already completed for this process."
+      },
+      {
+        "Key": "CleansingQCNotSubmittedMessage",
+        "Message": "Cleansing not submitted to QC. First submit cleansing for QC."
+      },
+      {
+        "Key": "CLNQCNotInProgressMessage",
+        "Message": "Cleansing QC not set in progress. First set cleansing QC in progress."
+      },
+      {
+        "Key": "CLNQCNotUpdInProgressMessage",
+        "Message": "Cleansing QC status is not updated to In-Progress."
+      },
+      {
+        "Key": "CLNQCSubmittedMessage",
+        "Message": "Cleansing QC submitted successfully."
+      },
+      {
+        "Key": "EXTERRSubmittedMessage",
+        "Message": "External errors submitted successfully."
+      },
+      {
+        "Key": "ReqstProcessErrorMessage",
+        "Message": "Some error occurred while processing the request."
+      },
+      {
+        "Key": "CLNQCRejectMessage",
+        "Message": "Cleansing QC rejected successfully. Cleansing reassigned by QC."
+      },
+      {
+        "Key": "UnableUpdDuplicateFileMessage",
+        "Message": "Unable to upload the duplicate files."
+      },
+      {
+        "Key": "UpdSuccessMessage",
+        "Message": "Selected file is ready to upload."
+      },
+      {
+        "Key": "UpdFailMessage",
+        "Message": "Upload failed"
+      },
+      {
+        "Key": "NotFetchRecordTimeDataMessage",
+        "Message": "Unable to fetch process record time data."
+      },
+      {
+        "Key": "ComplexityMatrixAddMessage",
+        "Message": "Complexity matrix has been added."
+      },
+      {
+        "Key": "ComplexityMatrixNotAddMessage",
+        "Message": "Complexity matrix has not been added."
+      },
+      {
+        "Key": "PerformActionMessage",
+        "Message": "You cannot perform any further action! because account is"
+      },
+      {
+        "Key": "CannotPerformActionMessage",
+        "Message": "Cannot perform any further action!"
+      },
+      {
+        "Key": "GeoActSaveMessage",
+        "Message": "Geospatial activity saved successfully."
+      },
+      {
+        "Key": "AdditionEvalSaveMessage",
+        "Message": "Additional evaluation status saved successfully."
+      },
+      {
+        "Key": "SWRWPRequestMessage",
+        "Message": "Something went wrong while processing the request."
+      },
+      {
+        "Key": "EvalMasterNotFetchedMessage",
+        "Message": "Evaluation Master data not fetched. Please try after some time."
+      },
+      {
+        "Key": "ProcessLeadMasterNotFetchedMessage",
+        "Message": "Process Lead Master data not fetched. Please try after some time."
+      },
+      {
+        "Key": "EngrMstNotFetchedMessage",
+        "Message": "Engineer Review Master data not fetched. Please try after some time."
+      },
+      {
+        "Key": "ELMDNotFetchedMessage",
+        "Message": "Engineer Lead Master data not fetched. Please try after some time."
+      },
+      {
+        "Key": "SSMdataNotFoundMessage",
+        "Message": "Storm Surge Master data not fetched. Please try after some time."
+      },
+      {
+        "Key": "FRMdataNotFoundMessage",
+        "Message": "Final Review Master data not fetched. Please try after some time."
+      },
+      {
+        "Key": "AddEvalJMTXMessage",
+        "Message": "Additional evaluation job moved to Xcceedance."
+      },
+      {
+        "Key": "DueDateOverMessage",
+        "Message": "Due date for additional evaluation is already crossed. Account cannot be moved to India."
+      },
+      {
+        "Key": "RushCapExhausMessage",
+        "Message": "Rush capacity is exhausted. Account cannot be moved to India."
+      },
+      {
+        "Key": "SWWWPRequestMessage",
+        "Message": "Something went wrong while processing the request."
+      },
+      {
+        "Key": "MQCNotSetInProgMessage",
+        "Message": "Modelling QC not set in progress. First set modelling QC in progress."
+      },
+      {
+        "Key": "MQCSavedMessage",
+        "Message": "Modelling QC submitted saved successfully."
+      },
+      {
+        "Key": "SEOWPRequestMessage",
+        "Message": "Some error occurred while processing the request."
+      },
+      {
+        "Key": "MQCRejectMessage",
+        "Message": "Modelling QC rejected successfully. Modelling reassigned by QC."
+      },
+      {
+        "Key": "AccMovedMessage",
+        "Message": "Account moved successfully!"
+      },
+      {
+        "Key": "OtherActivitySaveMessage",
+        "Message": "Other activity saved successfully."
+      },
+      {
+        "Key": "PDFExtractSaveMessage",
+        "Message": "PDF Extraction activity saved successfully."
+      },
+      {
+        "Key": "PDActivitySaveMessage",
+        "Message": "Process documentation activity saved successfully."
+      },
+      {
+        "Key": "QRASaveMessage",
+        "Message": "Query resolution activity saved successfully."
+      },
+      {
+        "Key": "RQCPSaveMessage",
+        "Message": "Reporting QC progress saved successfully."
+      },
+      {
+        "Key": "RQCPRejectMessage",
+        "Message": "Reporting QC rejected successfully. Reporting reassigned by QC."
+      },
+      {
+        "Key": "RQCNotInProgressMessage",
+        "Message": "Reporting QC not set in progress. First set reporting QC in progress."
+      },
+      {
+        "Key": "RisInsActivitySaveMessage",
+        "Message": "Risk Inspection activity saved successfully."
+      },
+      {
+        "Key": "DelegateActivityCreateMessage",
+        "Message": "Delegate activity created successfully."
+      },
+      {
+        "Key": "SEOWGTPTaskMessage",
+        "Message": "Some error occurred while getting the parent tasks"
+      },
+      {
+        "Key": "SEOWGTAnalystMessage",
+        "Message": "Some error occurred while getting the analyst."
+      },
+      {
+        "Key": "SCLNQCSavedMessage",
+        "Message": "Submit cleansing QC saved successfully."
+      },
+      {
+        "Key": "PFMendateFieldsMessage",
+        "Message": "Please fill all the mandatory fields."
+      },
+      {
+        "Key": "CLNSkippedFromQAMessage",
+        "Message": "Cleansing skipped from QA successfully."
+      },
+      {
+        "Key": "ModelingQCSaveMessage",
+        "Message": "Submit modelling QC saved successfully."
+      },
+      {
+        "Key": "UpdateSuccessMessage",
+        "Message": "updated successfully."
+      },
+      {
+        "Key": "ModelSkipFromQAMessage",
+        "Message": "Modelling skipped from QA successfully."
+      },
+      {
+        "Key": "ReportQCSaveMessage",
+        "Message": "Submit reporting QC saved successfully."
+      },
+      {
+        "Key": "ReportSkipFromQAMessage",
+        "Message": "Reporting skipped from QA successfully."
+      },
+      {
+        "Key": "TDAEActivitySaveMessage",
+        "Message": "Tool Development or Enhancement activity saved successfully."
+      },
+      {
+        "Key": "UserProfileSettingSaveMessage",
+        "Message": "User profile setting saved successfully."
+      },
+      {
+        "Key": "UserProfileSettingClearMessage",
+        "Message": "User profile setting cleared successfully."
+      },
+      {
+        "Key": "DataLoadErrorMessage",
+        "Message": "Data Loading Error."
+      },
+      {
+        "Key": "AccountDelMessage",
+        "Message": "Selected account deleted successfully."
+      },
+      {
+        "Key": "AccountSelectMessage",
+        "Message": "Please select the account."
+      },
+      {
+        "Key": "CompletestartedAccMessage",
+        "Message": "Please complete already started Account:"
+      },
+      {
+        "Key": "FilterSelectionMessage",
+        "Message": "Please select at least one filter option."
+      },
+      {
+        "Key": "CommentUpdatedSuccessMessage",
+        "Message": "The comments for selected account updated successfully."
+      },
+      {
+        "Key": "SWWWSAccCommentMessage",
+        "Message": "Something went wrong while saving the account comments."
+      },
+      {
+        "Key": "CLNStatusToInProgressMessage",
+        "Message": "Cleansing status set to in-progress successfully."
+      },
+      {
+        "Key": "ModelProcessInitMessage",
+        "Message": "The modelling process for selected account initiated successfully"
+      },
+      {
+        "Key": "ReportingProcessInitMessage",
+        "Message": "The reporting process for selected account initiated successfully."
+      },
+      {
+        "Key": "CLNSBSforAuditMessage",
+        "Message": "Please start the cleansing process before submitting for auditing."
+      },
+      {
+        "Key": "CLNNotYetSubmitforAuditMessage",
+        "Message": "The selected account is not yet submitted for cleansing QC."
+      },
+      {
+        "Key": "ModelQCSubmitMessage",
+        "Message": "Modelling for QC submitted successfully."
+      },
+      {
+        "Key": "ModelNotYetSubmitMessage",
+        "Message": "The selected account is not yet submitted for modelling QC."
+      },
+      {
+        "Key": "ReportNotYetSubmitMessage",
+        "Message": "The selected account is not yet submitted for reporting QC."
+      },
+      {
+        "Key": "CLNAuditProcessInitMessage",
+        "Message": "The cleansing audit process for selected account initiated successfully."
+      },
+      {
+        "Key": "CLNQCStatusNotUpdMessage",
+        "Message": "Cleansing QC status not updated."
+      },
+      {
+        "Key": "ModelAuditInitMessage",
+        "Message": "The modelling QC process for selected account initiated successfully."
+      },
+      {
+        "Key": "ModelQCNotUpdMessage",
+        "Message": "Modelling QC status is not updated."
+      },
+      {
+        "Key": "ReportAuditAccInitMessage",
+        "Message": "The reporting QC process for selected account initiated successfully."
+      },
+      {
+        "Key": "ReportQCNotUpdMessage",
+        "Message": "Reporting QC status not updated."
+      },
+      {
+        "Key": "AccStatusOnHoldMessage",
+        "Message": "The account status is already on hold."
+      },
+      {
+        "Key": "TaskProcessStatusSetOnHoldMessage",
+        "Message": "Task Process set to: On Hold."
+      },
+      {
+        "Key": "SWWWSetProcessOnHoldMessage",
+        "Message": "Something went wrong while setting the process on hold."
+      },
+      {
+        "Key": "AccNotYetstartCLNAuditMessage",
+        "Message": "The selected account is not yet started for cleansing QC."
+      },
+      {
+        "Key": "AccNotYetstartModelAuditMessage",
+        "Message": "The selected account is not yet started for modelling QC."
+      },
+      {
+        "Key": "AccNotYetstartReportAuditMessage",
+        "Message": "The selected account is not yet started for reporting QC."
+      },
+      {
+        "Key": "AccGoalSaveMessage",
+        "Message": "The account goals comments saved successfully."
+      },
+      {
+        "Key": "SWWWCmntSaveMessage",
+        "Message": "Something went wrong while saving the job comments."
+      },
+      {
+        "Key": "AlreadyExistMessage",
+        "Message": " is already exist."
+      },
+      {
+        "Key": "OptnNameMoreThanTwoChrMessage",
+        "Message": "Option name should be more than 2 character."
+      },
+      {
+        "Key": "EnterMoreThanTwoChrMessage",
+        "Message": "Please enter more than 2 character."
+      },
+      {
+        "Key": "PerilTemplSetSuccessMessage",
+        "Message": "Peril template set successfully."
+      },
+      {
+        "Key": "WhileSetPerilTempMessage",
+        "Message": "while setting the peril template."
+      },
+      {
+        "Key": "NoPerilTempSaveMessage",
+        "Message": "There is no peril template saved for your profile."
+      },
+      {
+        "Key": "FillAddEvalDueDateMessage",
+        "Message": "Please fill all additional evaluation due date."
+      },
+      {
+        "Key": "ProcessDetlUpdSuccessMessage",
+        "Message": "Process details updated successfully"
+      },
+      {
+        "Key": "DataSaveSuccessMessage",
+        "Message": "Data Saved Successfully."
+      },
+      {
+        "Key": "NotFetchOperatorDataMessage",
+        "Message": "Unable to fetch operator data."
+      },
+      {
+        "Key": "NotFetchConditionOperatorDataMessage",
+        "Message": "Unable to fetch conditional operator data."
+      },
+      {
+        "Key": "NotFetchRuleExpMessage",
+        "Message": "Unable to fetch rule expression."
+      },
+      {
+        "Key": "NotFetchFieldNameMessage",
+        "Message": "Unable to fetch field names."
+      },
+      {
+        "Key": "NotFetchModelsMessage",
+        "Message": "Unable to fetch models."
+      },
+      {
+        "Key": "DetlsCapturedMessage",
+        "Message": "details captured."
+      },
+      {
+        "Key": "AccAlreadyExistMessage",
+        "Message": "This account already exist"
+      },
+      {
+        "Key": "ErrorOnSubtaskMessage",
+        "Message": "Error occurred on subtask."
+      },
+      {
+        "Key": "ReqSubmitPartialMessage",
+        "Message": "The request submitted partially, either regular and rush slot is exhausted, or slot is not defined for selected due dates."
+      },
+      {
+        "Key": "NewProcessInitMessage",
+        "Message": "New process initiated successfully."
+      },
+      {
+        "Key": "NotAvailSlotForPrimModMessage",
+        "Message": "We have no available slots for the selected due date of primary modelling. Please choose different due date."
+      },
+      {
+        "Key": "NotAvailSlotForAddEvalMessage",
+        "Message": "We have no available slots for the selected expecting due date of additional evaluation. Please choose different expecting due date."
+      },
+      {
+        "Key": "FileDeleteSuccessMessage",
+        "Message": "File deleted successfully."
+      },
+      {
+        "Key": "UnableDeleteMessage",
+        "Message": "Unable to delete the file."
+      },
+      {
+        "Key": "NotFetchRemodelReasonMessage",
+        "Message": "Unable to fetch remodel reason."
+      },
+      {
+        "Key": "SelectPerilMessage",
+        "Message": "Please select peril."
+      },
+      {
+        "Key": "SelectLocGrpMessage",
+        "Message": "Please select location group."
+      },
+      {
+        "Key": "AccNameReqMessage",
+        "Message": "Account name is required."
+      },
+      {
+        "Key": "PerilReqMessage",
+        "Message": "At least one Peril is required."
+      },
+      {
+        "Key": "TIVReqMessage",
+        "Message": "TIV is required and should be greater than 0."
+      },
+      {
+        "Key": "InceptionDateReqMessage",
+        "Message": "Inception date is required."
+      },
+      {
+        "Key": "UWReqMessage",
+        "Message": "Underwriter is required."
+      },
+      {
+        "Key": "CurrencyReqMessage",
+        "Message": "Currency is required."
+      },
+      {
+        "Key": "BusinTypeReqMessage",
+        "Message": "Business Type is required."
+      },
+      {
+        "Key": "DuedateReqMessage",
+        "Message": "Due date is required."
+      },
+      {
+        "Key": "ReqTypeReqMessage",
+        "Message": "RequestType is required."
+      },
+      {
+        "Key": "LobReqMessage",
+        "Message": "Lob is required."
+      },
+      {
+        "Key": "SurverRptPathReqMessage",
+        "Message": "Survey Report Path is required as Is Survey Report is selected."
+      },
+      {
+        "Key": "SurverRptPathReqMessage",
+        "Message": "Not able get dates availability. Please try again later."
+      },
+      {
+        "Key": "SelectIncepDateMessage",
+        "Message": "Please select inception date."
+      },
+      {
+        "Key": "ReqIdNotAvailedMessage",
+        "Message": "'Request Id is not available. Please navigate through RM Template page."
+      },
+      {
+        "Key": "SelectRowToCopyDataMessage",
+        "Message": "Please select at least one row to copy the data."
+      },
+      {
+        "Key": "SelectFileForScrbMessage",
+        "Message": "Please select file for scrubbing process."
+      },
+      {
+        "Key": "IsAggregate",
+        "Message": "Please select file corresponding to isAggregate."
+      },
+      {
+        "Key": "SelectFileForVehicle",
+        "Message": "Please select file for Vehicle Data."
+      },
+      {
+        "Key": "DataScrbSuccessMessage",
+        "Message": "Data Scrubbed successfully."
+      },
+      {
+        "Key": "MappingSummarySaveMessage",
+        "Message": "Mapping summary saved successfully."
+      },
+      {
+        "Key": "ColumnMappingApprovMessage",
+        "Message": "Column mapping approved successfully."
+      },
+      {
+        "Key": "SelectRecordForApprovMessage",
+        "Message": "Please select at least one record to Approve."
+      },
+      {
+        "Key": "ColmnMapRejectSuccessMessage",
+        "Message": "Column mapping rejected successfully."
+      },
+      {
+        "Key": "SelectRecordToRejectMessage",
+        "Message": "Please select at least one record to reject."
+      },
+      {
+        "Key": "NewColmnNameReqtMessage",
+        "Message": "New column name is required."
+      },
+      {
+        "Key": "DVSaveSuccessMessage",
+        "Message": "Default values saved successfully."
+      },
+      {
+        "Key": "SelectAccountMessage",
+        "Message": "Please select an account."
+      },
+      {
+        "Key": "CloneMessage",
+        "Message": "No layer found for cloning."
+      },
+      {
+        "Key": "MoreThanThreeChrAccountMessage",
+        "Message": "Please enter more than 3 characters of account name"
+      },
+      {
+        "Key": "DataUpdSuccessMessage",
+        "Message": "Data Updated successfully."
+      },
+      {
+        "Key": "SelectConsOccupMessage",
+        "Message": "Please select construction and Occupancy."
+      },
+      {
+        "Key": "SelectAccToRejectMessage",
+        "Message": "Please select records to rejection."
+      },
+      {
+        "Key": "SelectAccToApproveMessage",
+        "Message": "Please select records to approve"
+      },
+      {
+        "Key": "ModMapToValidCodeMessage",
+        "Message": "Modifiers mapped to valid codes successfully."
+      },
+      {
+        "Key": "ModMapToInValidCodeMessage",
+        "Message": "Please map invalid modifiers to valid codes."
+      },
+      {
+        "Key": "ModReplaceSuccessMessage",
+        "Message": "Modifiers replaced successfully."
+      },
+      {
+        "Key": "MapValidModToValidCodeMessage",
+        "Message": "Please map valid modifiers to valid codes."
+      },
+      {
+        "Key": "MapModApproveSuccessMessage",
+        "Message": "Map modifier approved successfully."
+      },
+      {
+        "Key": "MapModRejectSuccessMessage",
+        "Message": "Map modifier rejected successfully."
+      },
+      {
+        "Key": "DataSegregateSuccessMessage",
+        "Message": "Data segregated successfully."
+      },
+      {
+        "Key": "RequiredDataForSegregateMessage",
+        "Message": "Please provide coordinates for data segregation"
+      },
+      {
+        "Key": "SelectRowFirstMessage",
+        "Message": "Please select a location to perform polygon."
+      },
+      {
+        "Key": "LatLongEmptyMessage",
+        "Message": "To perform polygon please select a location with Latitude & Longitude values and Coverage values should be greater than 0."
+      },
+      {
+        "Key": "SelectOneSanityRuleMessage",
+        "Message": "Please select at least one sanity rule."
+      },
+      {
+        "Key": "SaveSanityRuleMessage",
+        "Message": "Sanity rule saved successfully."
+      },
+      {
+        "Key": "FailSanityRuleMessage",
+        "Message": "Something went wrong."
+      },
+      {
+        "Key": "SelectTPProviderMessage",
+        "Message": "Please select any provider!"
+      },
+      {
+        "Key": "SelectTPColumnMessage",
+        "Message": "Please select anyone column!"
+      },
+      {
+        "Key": "PasswordPolicy",
+        "Message": "Password should contain minimum requirement of 8-15 characters with at least one uppercase, one lowercase, one numeric and one special character ($!%*#?&)."
+      },
+      {
+        "Key": "AccountAddValidation",
+        "Message": "Sorry. You are not allowed to add any further account type!"
+      },
+      {
+        "Key": "ApplicationSuccessMessage",
+        "Message": "Application configuration Updated Successfully!"
+      },
+      {
+        "Key": "LOBValidation",
+        "Message": "Please select Line Of Business!"
+      },
+      {
+        "Key": "FileUploadSuccess",
+        "Message": "Files uploaded successfully."
+      },
+      {
+        "Key": "FailToUploadFile",
+        "Message": "Invalid file type. System supports only Excel files."
+      },
+      {
+        "Key": "PrimaryModeling",
+        "Message": "Primary Modelling cannot be deleted."
+      },
+      {
+        "Key": "AccountTypeDeletion",
+        "Message": "Selected account type deleted successfully!"
+      },
+      {
+        "Key": "ValidationError",
+        "Message": "Validation errors. Please enter email."
+      },
+      {
+        "Key": "EmailValidation",
+        "Message": "User email does not exist. Enter valid email"
+      },
+      {
+        "Key": "PasswordLinkValidation",
+        "Message": "Password link has been sent to you successfully."
+      },
+      {
+        "Key": "TryAgainError",
+        "Message": "Something went wrong. Please try again later."
+      },
+      {
+        "Key": "NoCellDescription",
+        "Message": "No pending cell description to approve."
+      },
+      {
+        "Key": "UserAssignedConfirmation",
+        "Message": "User assigned successfully."
+      },
+      {
+        "Key": "UserAssignmentMandatory",
+        "Message": "All user assignments are mandatory for selected accounts."
+      },
+      {
+        "Key": "AllocationStarts",
+        "Message": "Account(s) allocation starts."
+      },
+      {
+        "Key": "AccountsAllocated",
+        "Message": "Account(s) allocated successfully."
+      },
+      {
+        "Key": "LeaveSaved",
+        "Message": "Leave saved successfully."
+      },
+      {
+        "Key": "LeaveNotSaved",
+        "Message": "Leave already exists for the selected date."
+      },
+      {
+        "Key": "ErrorProcessingRequest",
+        "Message": "Something went wrong while processing the request."
+      },
+      {
+        "Key": "GetAnalystError",
+        "Message": "Some error occurred while getting the analyst."
+      },
+      {
+        "Key": "LeaveDetailsError",
+        "Message": "Some error occurred while getting the leave details."
+      },
+      {
+        "Key": "LeaveDeletedSCS",
+        "Message": "Leave deleted successfully."
+      },
+      {
+        "Key": "LeaveValidation",
+        "Message": "Leave To date should be greater than Leave From date."
+      },
+      {
+        "Key": "ValidEmail",
+        "Message": "Please enter a valid email address."
+      },
+      {
+        "Key": "CompleteValidation",
+        "Message": "Please complete validation(s)."
+      },
+      {
+        "Key": "InvalidEmail",
+        "Message": "Receiver email address is invalid"
+      },
+      {
+        "Key": "SavedSuccessfully",
+        "Message": "is saved successfully"
+      },
+      {
+        "Key": "RawSavedSuccessfully",
+        "Message": "saved successfully"
+      },
+      {
+        "Key": "TestEmail",
+        "Message": "Test email has been sent."
+      },
+      {
+        "Key": "ProcessConfigUpdated",
+        "Message": "Process configuration updated successfully"
+      },
+      {
+        "Key": "RestrictFurtherActions",
+        "Message": "You cannot perform any further action!"
+      },
+      {
+        "Key": "PasswordlinkValid",
+        "Message": "Your password link is valid."
+      },
+      {
+        "Key": "ValidationError",
+        "Message": "Validation errors. Please fill all mandatory fields."
+      },
+      {
+        "Key": "PasswordResetUnScs",
+        "Message": "Error! Password reset unsuccessful."
+      },
+      {
+        "Key": "PasswordResetSCS",
+        "Message": "Password reset successful."
+      },
+      {
+        "Key": "ResetLink",
+        "Message": "Reset link has been expired or not valid."
+      },
+      {
+        "Key": "TaskConfig",
+        "Message": "Task configuration save as "
+      },
+      {
+        "Key": "Process",
+        "Message": " Process"
+      },
+      {
+        "Key": "TUnableSave",
+        "Message": "Unable to save Task configuration as "
+      },
+      {
+        "Key": "TConfigEmpty",
+        "Message": "Task configuration is empty."
+      },
+      {
+        "Key": "TCantUpdateSP",
+        "Message": "You can’t update 'System Process'."
+      },
+      {
+        "Key": "TUnableToUpdate",
+        "Message": "Unable to update Task configuration as "
+      },
+      {
+        "Key": "TCantMove",
+        "Message": "You can't move "
+      },
+      {
+        "Key": "Tbecoz",
+        "Message": " because it's depends on "
+      },
+      {
+        "Key": "TConfigUpdate",
+        "Message": "Task configuration updated as "
+      },
+      {
+        "Key": "URequestedRes",
+        "Message": "You are not authorized for requested resource."
+      },
+      {
+        "Key": "SessionExpired",
+        "Message": "Your session has been expired. Please login again."
+      },
+      {
+        "Key": "AuthenticateToken",
+        "Message": "Your request doesn't contain valid authentication token."
+      },
+      {
+        "Key": "RequestTimeout",
+        "Message": "Your request has been timeout. Either you lost connection or it's taking more than usual time."
+      },
+      {
+        "Key": "SomethingWrongServer",
+        "Message": "Something went wrong at server side. Please contact to your system admin."
+      },
+      {
+        "Key": "InvalidData",
+        "Message": "Your request contains some invalid data. Please contact to your system admin."
+      },
+      {
+        "Key": "RequestResource",
+        "Message": "Request resource/ part of resource are not found on server."
+      },
+      {
+        "Key": "Unauthorized",
+        "Message": "You are not authorized for requested resource."
+      },
+      {
+        "Key": "TeamCreationSCS",
+        "Message": "Team created Successfully!"
+      },
+      {
+        "Key": "TeamUpdated",
+        "Message": "Team Updated successfully."
+      },
+      {
+        "Key": "UserDeleted",
+        "Message": "User deleted successfully."
+      },
+      {
+        "Key": "User",
+        "Message": "User "
+      },
+      {
+        "Key": "Successfully",
+        "Message": " successfully."
+      },
+      {
+        "Key": "RestrictUserDel",
+        "Message": "You can't delete your user details. Please unselect"
+      },
+      {
+        "Key": "SelectOneUser",
+        "Message": "Please select at least one user."
+      },
+      {
+        "Key": "SelectOneFile",
+        "Message": "Please select at least one file."
+      },
+      {
+        "Key": "StatusActive",
+        "Message": "Status must be active when creating new user."
+      },
+      {
+        "Key": "UserUpdate",
+        "Message": "User Updated Successfully."
+      },
+      {
+        "Key": "NewUserCreate",
+        "Message": "New User Created Successfully."
+      },
+      {
+        "Key": "RolePrivilegesSaved",
+        "Message": "Role privileges saved successfully."
+      },
+      {
+        "Key": "AccountTypePerils",
+        "Message": "Account type and Region Perils associated successfully to team."
+      },
+      {
+        "Key": "UserPrivileges",
+        "Message": "User privileges assigned successfully."
+      },
+      {
+        "Key": "TeamPrivileges",
+        "Message": "Team privileges saved successfully."
+      },
+      {
+        "Key": "TeamDeleted",
+        "Message": "Team deleted successfully."
+      },
+      {
+        "Key": "UploadScs",
+        "Message": "Selected file is ready to upload."
+      },
+      {
+        "Key": "UploadFail",
+        "Message": "Upload failed"
+      },
+      {
+        "Key": "UnableProcessQ",
+        "Message": "Unable to process query."
+      },
+      {
+        "Key": "EnterQueryComments",
+        "Message": "Please enter some comments in Query email body."
+      },
+      {
+        "Key": "QuerySent",
+        "Message": "Your query has been sent."
+      },
+      {
+        "Key": "UnableSentQuery",
+        "Message": "Unable to send query."
+      },
+      {
+        "Key": "EnterValidEmail",
+        "Message": "Please enter a valid email address."
+      },
+      {
+        "Key": "EnterEmailSub",
+        "Message": "Please enter the mail subject."
+      },
+      {
+        "Key": "QueryClassification",
+        "Message": "Unable to get Query classification"
+      },
+      {
+        "Key": "QueryResolved",
+        "Message": "Query has been resolved."
+      },
+      {
+        "Key": "UnableQResolve",
+        "Message": "Unable to resolve query."
+      },
+      {
+        "Key": "UnableQDetails",
+        "Message": "Unable to get Query details."
+      },
+      {
+        "Key": "UniqueQDetails",
+        "Message": "We didn't get unique query details id."
+      },
+      {
+        "Key": "QualityReportUnavailable",
+        "Message": "Quality Report is not available!"
+      },
+      {
+        "Key": "QualityReportUnavailable",
+        "Message": "Query Percentage Report is not available!"
+      },
+      {
+        "Key": "UnderReportUnavailable",
+        "Message": " Underwriter Report is not available for this period!"
+      },
+      {
+        "Key": "COBReportUnavailable",
+        "Message": "Class of Business Report is not available!"
+      },
+      {
+        "Key": "RuleDeleted",
+        "Message": "Rule deleted successfully."
+      },
+      {
+        "Key": "SelectRule",
+        "Message": "Please select rule"
+      },
+      {
+        "Key": "UnableFieldName",
+        "Message": "Unable to fetch field names."
+      },
+      {
+        "Key": "ConditionalOp",
+        "Message": "\"NONE\" conditional operator is required only on last row of rule conditions."
+      },
+      {
+        "Key": "FillMandatotyFields",
+        "Message": "Please fill all mandatory fields in rule replacement."
+      },
+      {
+        "Key": "FillAtLeastOneRC",
+        "Message": "Please fill at least one rule conditions with all mandatory fields."
+      },
+      {
+        "Key": "OnlyNumeric",
+        "Message": "Only numeric values are allowed in value column for selected operator."
+      },
+      {
+        "Key": "UnableFetchModels",
+        "Message": "Unable to fetch models."
+      },
+      {
+        "Key": "UnableFetchCO",
+        "Message": "Unable to fetch conditional operator data."
+      },
+      {
+        "Key": "UnableFetchRE",
+        "Message": "Unable to fetch rule expression."
+      },
+      {
+        "Key": "UnableFetchOpData",
+        "Message": "Unable to fetch operator data."
+      },
+      {
+        "Key": "UnableFetchRuleData",
+        "Message": "Unable to fetch rule data."
+      },
+      {
+        "Key": "UnableFetchData",
+        "Message": "Unable to fetch rule data."
+      },
+      {
+        "Key": "UnableFetchRuleType",
+        "Message": "Unable to fetch rules types."
+      },
+      {
+        "Key": "UserDeleteWarning",
+        "Message": "Are you sure you want to delete the User? Once you delete all the notes and impediments will be deleted and cannot be undone."
+      },
+      {
+        "Key": "FileDeleteWarning",
+        "Message": "Are you sure you want to delete the Files? Once you delete all the notes and impediments will be deleted and cannot be undone."
+      },
+      {
+        "Key": "RoleDeleteWarning",
+        "Message": "Are you sure you want to delete the Team? Once you delete all the notes and impediments will be deleted and cannot be undone."
+      },
+      {
+        "Key": "TATRptNotAvailable",
+        "Message": "Tat Status Report is not available."
+      },
+      {
+        "Key": "RuleInserted",
+        "Message": "Rule inserted successfully."
+      },
+      {
+        "Key": "RuleUpdated",
+        "Message": "Rule updated successfully."
+      },
+      {
+        "Key": "RuleDeleteWarning",
+        "Message": "Are you sure you want to delete the Rule Expression?"
+      },
+      {
+        "Key": "CancelAccSubject",
+        "Message": "Account #accountname has been cancelled successfully."
+      },
+      {
+        "Key": "CancelAccBody",
+        "Message": "Account #accountname is cancelled in the cat modelling process."
+      },
+      {
+        "Key": "CompleteAccSubject",
+        "Message": "Account #accountname has been completed successfully."
+      },
+      {
+        "Key": "CompleteAccBody",
+        "Message": "Account #accountname is completed in the cat modelling process and available for your review in the designated folder."
+      },
+      {
+        "Key": "FileFormatNotAllowed",
+        "Message": "Selected (.msg) format is not allowed"
+      },
+      {
+        "Key": "Proposeddatescs",
+        "Message": "Proposed Date updated successfully for selected process."
+      },
+      {
+        "Key": "CustomJobValidation",
+        "Message": "The request cannot be accepted for selected due date. Please modify before creating a request."
+      },
+      {
+        "Key": "UserSetting",
+        "Message": "The User Settings is updated successfully."
+      },
+      {
+        "Key": "FillAtLeastOneRCLMS",
+        "Message": "Please select at least one filter with all mandatory fields."
+      },
+      {
+        "Key": "FillLocationData",
+        "Message": "Please fill Location data."
+      },
+      {
+        "Key": "EnterTIVAndCurrency",
+        "Message": "Before adding a new Option, please provide Currency and TIV on Request Information."
+      },
+      {
+        "Key": "EmptyDraft",
+        "Message": "Please enter data in some fields before saving request."
+      },
+      {
+        "Key": "MismatchPerilData",
+        "Message": "There is a mismatch in selected set of perils and their financials."
+      },
+      {
+        "Key": "OptionBlank",
+        "Message": "Option Name cannot be left blank in peril level financial."
+      },
+      {
+        "Key": "DuplicateOption",
+        "Message": "Please remove duplicate peril level financials."
+      },
+      {
+        "Key": "RecentActivityUpdate",
+        "Message": "The recent activities has been updated."
+      },
+      {
+        "Key": "RecentActivityMinutesExcess",
+        "Message": "The recent activities time exceeded more than "
+      },
+      {
+        "Key": "RecentActivityUpdateFailed",
+        "Message": "The recent activities failed to update."
+      },
+      {
+        "Key": "RecentActivityUpdateNoData",
+        "Message": "There are no changes to save."
+      },
+      {
+        "Key": "BlanketPerilMismatch",
+        "Message": "There is mismatch in set of Perils in Policy Blanket Information."
+      },
+      {
+        "Key": "PerilSelect",
+        "Message": "Please select Perils."
+      },
+      {
+        "Key": "DashboardWizardSettingSaveMessage",
+        "Message": "Dashboard settings saved successfully."
+      },
+      {
+        "Key": "DashboardWizardSettingClearMessage",
+        "Message": "Dashboard wizard setting cleared successfully."
+      },
+      {
+        "Key": "AccountStatusChangeMessage",
+        "Message": "Account Status Updated successfully."
+      },
+      {
+        "Key": "BlanketProrationSuccess",
+        "Message": "Blanket Proration added successfully."
+      },
+      {
+        "Key": "NotAllowedToSelectotherCol",
+        "Message": "You are not allowed to select cell from another column."
+      },
+      {
+        "Key": "NoRowSelected",
+        "Message": "No row is selected, please select any row."
+      },
+      {
+        "Key": "FileUploadZeroSize",
+        "Message": " file(s) are empty. Please upload file(s) size greater than 0 KB."
+      },
+      {
+        "Key": "FileUploadInvalidType",
+        "Message": " file(s) format are not supported. Please upload valid file type."
+      },
+      {
+        "Key": "SelectLocWithPipeline",
+        "Message": " To perform pipeline proration, please select a location in which location name should be Pipeline."
+      },
+      {
+        "Key": "InvalidIDsNotAllowed",
+        "Message": "Please enter a valid link ID."
+      },
+      {
+        "Key": "PDCoverageCol",
+        "Message": "To Perform proration, PD Coverage column is missing in RM Template."
+      },
+      {
+        "Key": "RecordsCleared",
+        "Message": "All records cleared!"
+      },
+      {
+        "Key": "NoRecords",
+        "Message": "No records to clear"
+      },
+      {
+        "Key": "InvalidDueDate",
+        "Message": "Due date cannot be prior to today."
+      },
+      {
+        "Key": "InvalidExpirationDate",
+        "Message": "Expiration Date cannot be prior to Inception Date"
+      },
+      {
+        "Key": "InvalidInceptionDate",
+        "Message": "Inception Date cannot be prior to Due Date"
+      },
+      {
+        "Key": "LicenseExpired",
+        "Message": "Your request could not be processed as your license has expired."
+      },
+      {
+        "Key": "BulkPartialProcessMessage",
+        "Message": "Bulk process partially initiated successfully"
+      },
+      {
+        "Key": "SelectProvider",
+        "Message": "Please select a provider."
+      },
+      {
+        "Key": "Nodata",
+        "Message": "No data to display"
+      },
+      {
+        "Key": "NoSpecialChar",
+        "Message": "Special characters are not allowed"
+      },
+      {
+        "Key": "NoTouchMsg",
+        "Message": "Account has been submitted for No Touch Process."
+      },
+      {
+        "Key": "DuplicateDescripton",
+        "Message": "Cell description already exist in repository."
+      },
+      {
+        "Key": "SameBlanketCopyMessage",
+        "Message": "Cannot copy on same Blanket"
+      },
+      {
+        "Key": "RC_ActionExpressionLeftOperandMissing",
+        "Message": "You must select left operator and field first to add a new sub expression"
+      },
+      {
+        "Key": "RC_RuleCollectionEmpty",
+        "Message": "No rule exist for creation"
+      },
+      {
+        "Key": "RC_RuleExpressionEmpty",
+        "Message": "Please add at least one rule expression"
+      },
+      {
+        "Key": "RC_RuleExpressionIncomplete",
+        "Message": "All values in each rule expression must be defined"
+      },
+      {
+        "Key": "RC_RuleActionEmpty",
+        "Message": "Please add at least one rule action"
+      },
+      {
+        "Key": "RC_RuleActionIncomplete",
+        "Message": "All values in each action set must be defined"
+      },
+      {
+        "Key": "NewParty",
+        "Message": "New Party added successfully."
+      },
+      {
+        "Key": "PartyExist",
+        "Message": "Entered Party is already exist."
+      },
+      {
+        "Key": "LMS_Export_Update_ColumnMapping",
+        "Message": "Column Mapping has been updated successfully"
+      },
+      {
+        "Key": "LMS_Export_New_ColumnMapping",
+        "Message": "New Column Mapping has been added successfully"
+      },
+      {
+        "Key": "LMS_Export_New_CellMapping",
+        "Message": "Modifier Mapping has been updated successfully"
+      },
+      {
+        "Key": "CopyAccountMandetory",
+        "Message": "Please fill any one from Prefix, Suffix or Extn"
+      },
+      {
+        "Key": "LMS_ADD_NEW_COLUMN_RULE",
+        "Message": "New Column Rule has been added successfully"
+      },
+      {
+        "Key": "LMS_Export_Delete_ColumnMapping",
+        "Message": "OED to Model Column mapping has been deleted successfully"
+      },
+      {
+        "Key": "SelectOEDColumnMapping",
+        "Message": "Please select mapping to delete"
+      },
+      {
+        "Key": "RuleSetDeactivated",
+        "Message": "Rule Set has been de-activated"
+      },
+      {
+        "Key": "RuleSetActivated",
+        "Message": "Rule Set has been activated"
+      },
+      {
+        "Key": "AccNoReqMessage",
+        "Message": "Account number is required."
+      },
+      {
+        "Key": "GrossPreReqMessage",
+        "Message": "Gross Premium is required."
+      },
+      {
+        "Key": "CoverageReqMessage",
+        "Message": "Coverages is required."
+      },
+      {
+        "Key": "DataUpdFailedMessage",
+        "Message": "Data not updated successfully."
+      },
+      {
+        "Key": "CopyAccDuplicate",
+        "Message": "Copied account already exist."
+      },
+      {
+        "Key": "ExpiryDateReqMessage",
+        "Message": "Expiry date is required."
+      },
+      {
+        "Key": "TaxReqMessage",
+        "Message": "Tax is required."
+      },
+      {
+        "Key": "BrokageReqMessage",
+        "Message": "Brokerage date is required."
+      },
+      {
+        "Key": "PayoutBasisReqMessage",
+        "Message": "Pay-out basis is required."
+      },
+      {
+        "Key": "NetPremiumReqMessage",
+        "Message": "NetPremium is required."
+      },
+      {
+        "Key": "ParticipationReqMessage",
+        "Message": "Participation is required."
+      },
+      {
+        "Key": "ReinsuredNameReqMessage",
+        "Message": "Reinsured name is required."
+      },
+      {
+        "Key": "BranchReqMessage",
+        "Message": "branch is required."
+      },
+      {
+        "Key": "PerilAlreadyPresent",
+        "Message": "Peril already present in data."
+      },
+      {
+        "Key": "LMSExportCordinatorJobInsertSuccess",
+        "Message": "Transformation Job submitted successfully"
+      },
+      {
+        "Key": "LMSExportContextKeyMissing",
+        "Message": "Context is missing"
+      },
+      {
+        "Key": "LMSExportModelMissing",
+        "Message": "Please select a model name from dropdown"
+      },
+      {
+        "Key": "LMSExportProcessIdMissing",
+        "Message": "Process ID is missing"
+      },
+      {
+        "Key": "CorrectFilterCriteria",
+        "Message": "Select appropriate filter criteria"
+      },
+      {
+        "Key": "SuccessfulDataFilter",
+        "Message": "Data filtered successfully"
+      },
+      {
+        "Key": "LMS_UPDATE_NEW_COLUMN_RULE",
+        "Message": "Column Rule has been updated successfully"
+  
+      },
+      {
+        "Key": "SelectSOVFile",
+        "Message": "Please select process with SOV File"
+      },
+      {
+        "Key": "SelectbothLOBandModel",
+        "Message": "Select both LOB and Model"
+      },
+      {
+        "Key": "OptionPresentInData",
+        "Message": "Option Name is present in Peril Financial Data."
+      },
+      {
+        "Key": "BlanketValProrationSuccess",
+        "Message": "Blanket Value proration completed successfully."
+      },
+      {
+        "Key": "CopyAccountSaveSuccess",
+        "Message": "Copy Account created successfully."
+      },
+      {
+        "Key": "FileDownloadInvalidType",
+        "Message": " file(s) format are not supported. Please download valid file type."
+      },
+      {
+        "Key": "CORRECTIDMESSAGE",
+        "Message": "Invalid ID's not allowed"
+      },
+      {
+        "Key": "BLANKETPRORATION",
+        "Message": "Overall Value proration completed successfully"
+      },
+      {
+        "Key": "PerilNotSelected",
+        "Message": "Please select any peril"
+      },
+      {
+        "Key": "LayerAlreadyPresent",
+        "Message": "Layer Already Present"
+      },
+      {
+        "Key": "BlanketAlreadyPresent",
+        "Message": "Blanket already present with same peril code and coverage type"
+      },
+      {
+        "Key": "PerilsAlreadyPresent",
+        "Message": "Peril already present with same peril code, Location Group and coverage type"
+      },
+      {
+        "Key": "NoLayerPresent",
+        "Message": "Add layer first"
+      },
+      {
+        "Key": "NoPerilLocationPresent",
+        "Message": "Select peril & location first"
+      },
+      {
+        "Key": "NoPerilPresent",
+        "Message": "Select peril first"
+      },
+      {
+        "Key": "BlanketRemovedByPeril",
+        "Message": "Blanket removed with peril code"
+      },
+      {
+        "Key": "PerilRemovedByPerilCode",
+        "Message": "Peril financial removed with peril code"
+      },
+      {
+        "Key": "BlanketRemovedByCoverage",
+        "Message": "Blanket removed with coverage type"
+      },
+      {
+        "Key": "PerilRemovedByCoverage",
+        "Message": "Peril financial removed with coverage type"
+      },
+      {
+        "Key": "PerilRemovedByLayer",
+        "Message": "Peril financial deleted as all layers removed"
+      },
+      {
+        "Key": "ProcessPartialSuccessMessage",
+        "Message": "New process is initiated sucessfully, but "
+      },
+      {
+        "Key": "DraftSaved",
+        "Message" :  "Draft saved successfully"
+      },{
+        "Key":"NodataToUpdate",
+        "Message": "No data to update"
+      },{
+        "Key":"NodataToFilter",
+        "Message": "No data to filter"
+      }
+      ,{
+        "Key":"IncorrectExp",
+        "Message": "Please build a correct expression."
+      },
+      {
+        "Key":"NoExpression",
+        "Message": "No Expression found."
+      },
+      {
+        "Key":"SelectLoc",
+        "Message": "Select atleast one location to delete"
+      },
+      {
+        "Key":"NoDataToDelete",
+        "Message":  "No data to delete"
+      }
+      
+      
+      
+      
+    ]
+  }
+  

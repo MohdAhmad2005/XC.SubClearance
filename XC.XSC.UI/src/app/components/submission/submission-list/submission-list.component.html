@@ -1,0 +1,13 @@
+<div class="border-top col-md-12 pt-3">
+  <div class="table-wrapper">
+    <ng-container>
+      <generic-table [RowData]="tableContent" [FilterField]="globalFilterField" (ActionEventEmitter)="setActionEvents($event)"
+                     (LinkEventEmitter)="getSelectedRowData($event)" (LazyLoading)="getTableContent($event)"
+                     [ColumnDefination]="columnDefination" [PageInfo]="pageInfo" (OnClickDropdownEventEmitter)="dropDownEventEmitter($event)" class="p-0" [IsActionVisible]="IsActionVisible" [Actions]="actionsResult"></generic-table>
+    </ng-container>
+    <ng-container *ngIf="isConfrimAlertVisible">
+      <confirmation-message [ActionReferenceType]="actionReference"  [Message]="confirmationMessage" (Accept)="confirmationClick($event)"></confirmation-message>
+    </ng-container>
+  </div>
+</div>
+

@@ -1,0 +1,75 @@
+<div class="tab-pane" id="contact" role="tabpanel" aria-labelledby="contact-tab">  
+  <div class="card">
+    <div class="card-body">
+      <form>
+        <div class="row m-0">          
+          <div class="card border">
+            <div class="d-flex flex-wrap card-header">
+              <h4 class="card-title mb-0">{{reviewHeader}}</h4>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="reviewForm">
+                <div class="row">
+                  <ng-container *ngFor="let question of reviewControls">
+                    <div [attr.class]="question.class ? question.class : 'col-md-4 mb-4'" *ngIf="question.active">
+                      <app-question [question]="question" class="mb-2" [form]="reviewForm" [ngStyle]="{'display': question.active == true?'block':'none'}"></app-question>
+                    </div>
+                  </ng-container>
+                </div>
+              </form>
+              <div class="row">
+                <label class="col-lg-3">{{generalInfoTableHeader}}</label>
+              </div>
+              <div class="row mb-3">
+                <div class="col-lg-12">
+                  <ng-container>
+                    <generic-static-table [RowData]="tableContent" [ColumnDefination]="columnDefination" class="p-0" 
+                    [IsGlobalSearchFilterVisible]="false" [IsActionVisible]="false"></generic-static-table>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card border">
+            <div class="d-flex flex-wrap card-header">
+              <h4 class="card-title mb-0">{{pasHeader}}</h4>
+            </div>
+            <div class="card-body">
+              <form [formGroup]="pasForm">
+                <div class="row">
+                  <ng-container *ngFor="let question of pasControls">
+                    <div [attr.class]="question.class ? question.class : 'col-md-4 mb-4'" *ngIf="question.active">
+                      <app-question [question]="question" class="mb-2" [form]="pasForm" [ngStyle]="{'display': question.active == true?'block':'none'}"></app-question>
+                    </div>
+                  </ng-container>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="row">
+        <div class="d-flex bd-highlight mb-3">
+          <div class="me-auto p-2 bd-highlight">
+            <button type="button" class="btn btn-primary" (click)="saveAndExit()" [disabled]="isSaveAndExitButtonDisable">Save & Exit</button>
+          </div>
+          <div class="p-2 bd-highlight">
+            <button type="button" class="btn btn-green" [disabled]="isReviewButtonDisable" (click)="submitForReview()" *ngIf="isReviewButtonVisible">Submit for Review</button>
+          </div>
+          <div class="p-2 bd-highlight">
+            <button type="button" class="btn btn-green" (click)="submitForPAS()" [disabled]="isPasButtonDisable"  *ngIf="isPasButtonVisible">Submit for PAS</button>
+          </div>
+          <div class="p-2 bd-highlight">
+            <button type="button" class="btn btn-green" (click)="sendBackToProcessor()" [disabled]="isProcessorButtonDisable" *ngIf="isProcessorButtonVisible">Send back to Processor</button>
+          </div>
+        </div>
+      </div>
+      <div id="displayinfo">
+      </div>
+    </div>
+  </div>  
+  <ng-container *ngIf="isConfrimAlertVisible">
+    <confirmation-message [ActionReferenceType]="actionReference" [Message]="confirmationMessage"
+        (Accept)="confirmationClick($event)"></confirmation-message>
+</ng-container>

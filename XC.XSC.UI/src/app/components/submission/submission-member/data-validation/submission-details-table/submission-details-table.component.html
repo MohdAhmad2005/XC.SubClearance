@@ -1,0 +1,37 @@
+<div class="card-body" *ngIf="formData">
+  <form #loginForm="ngForm">
+    <p-table [value]="formData" groupRowsBy="groupName" [columns]="colsData" rowGroupMode="subheader">
+      <ng-template pTemplate="header" let-rowData let-columns>
+        <tr>
+          <th pResizableColumn *ngFor="let col of columns" scope="col" pReorderableColumn>
+            <span class="ui-column-title">{{col.header}}</span>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="groupheader" let-submission let-i="rowIndex">
+        <tr pRowGroupHeader>
+          <td colspan="4" class="text-center">
+            <span class="p-text-bold p-ml-2"><strong>{{submission.groupName}}</strong></span>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-columns="columns" col.key let-controls let-i="rowIndex">
+        <tr>
+          <td *ngFor="let col of columns; let last = last">
+            <ng-container *ngFor="let controlTypes of controls.controls; let last = last">
+              <div *ngIf="col.key == controlTypes.key">
+                <form #itemForm="ngForm">
+                  <generic-submission-control [controls]="controls" [index]="i"
+                    [controlType]="controlTypes"></generic-submission-control>
+                  <!-- <ng-container *ngIf="!itemForm.form.valid" >
+                      <small class="text-danger text-left"> {{controlTypes.key}} is required.</small>
+                    </ng-container>                -->
+                </form>
+              </div>
+            </ng-container>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </form>
+</div>

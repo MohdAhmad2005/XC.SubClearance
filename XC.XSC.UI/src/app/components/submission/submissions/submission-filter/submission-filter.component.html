@@ -1,0 +1,61 @@
+<form class="mb-4" id="search-body" class="accordion-collapse collapse show" aria-labelledby="search-heading"
+      data-bs-parent="#accordionsearch" (ngSubmit)="todaySubmission()" [formGroup]="submissionSearch" >
+
+  <alert-message #alertMessage [fade]="true"></alert-message>
+
+  <div class="row">
+    <div class="col-lg-3 mb-4" *ngIf="isScopeVisible">
+      <label>Inscope/Outscope</label>
+      <select class="form-select" id="in-out-scope"  formControlName="inOutScope" (change)="changeSubmissionScope($event)">
+        <option *ngFor="let items of scopeListKeys" [value]="items">{{scopeList[items]}}</option>
+      </select>
+    </div>
+    <div class="col-lg-3 mb-4" *ngIf="isCaseNumberVisible">
+      <label>Case Number</label>
+      <input type="text" id="caseNumber" class="form-control" placeholder="Please Enter at-least 1 numeric after Prefix" formControlName="caseNumber" maxlength="50">
+    </div>
+    <div class="col-lg-3 mb-4" *ngIf="isInsuredNameVisible">
+      <label>Insured Name</label>
+      <input type="text" id="InsuredName" class="form-control" placeholder="Please Enter at-least 3 alphabet" formControlName="insuredName" maxlength="200">
+    </div>
+    <div class="col-lg-3 mb-4" *ngIf="isBrokerNameVisible">
+      <label>Broker Name</label>
+      <input type="text" id="BrokerName" class="form-control" placeholder="Please Enter at-least 3 alphabet" formControlName="brokerName" maxlength="200">
+    </div>
+    <div class="col-lg-3 mb-4" *ngIf="isStatusVisible">
+      <label>Status</label>
+      <select class="form-select"   formControlName="statusList">
+        <option value="">Select</option>
+        <option *ngFor="let items of statusList" [value]="items.id">{{items.label}}</option>
+      </select>
+    </div>
+    <div class="col-lg-3 mb-4" *ngIf="isReceivedDateVisible">
+      <label>Received Date</label>
+      <input type="text" class="form-control"  formControlName="receivedDate" #d="bsDaterangepicker" maxlength="23" bsDaterangepicker
+             [bsConfig]="bsDateRangeConfig" placeholder="Eg: 20/09/2022 - 30/09/2022" (onHidden)="onDateValueChange('receivedDate')">
+    </div>
+    <div class="col-lg-3 mb-4" *ngIf="isDueDateVisible">
+      <label>Due Date</label>
+      <input type="text" class="form-control" formControlName="dueDate" #d="bsDaterangepicker" maxlength="23" bsDaterangepicker
+             [bsConfig]="bsDateRangeConfig" placeholder="Eg: 20/09/2022 - 30/09/2022" (onHidden)="onDateValueChange('dueDate')">
+    </div>
+    <div class="col-lg-3 mb-4 inscope" *ngIf="isAssignedToVisible">
+      <label>Assigned To</label>
+      <select class="form-select" formControlName="assignTo">
+        <option value="">Select</option>
+        <option *ngFor="let items of assignTo" [value]="items.id">{{items.firstName}} {{items.lastName}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="row mb-4">
+    <div class="col-lg-12 d-flex justify-content-end">
+      <button type="button" class="btn btn-secondary" (click)="reset()">
+        Reset
+      </button>
+      <button class="btn btn-primary">
+        Search
+      </button>
+    </div>
+  </div>
+</form>
+

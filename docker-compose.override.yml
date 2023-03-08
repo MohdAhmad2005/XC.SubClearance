@@ -1,0 +1,57 @@
+version: '3.4'
+
+networks: 
+  default: 
+    external: 
+      name: doc-storage-net
+
+services:
+  mongodb:
+    container_name: xsc-mongo-db
+    image: mongo
+    restart: always
+    ports:
+      - 37018:27018
+    volumes:
+      - c:\mongodb\xsc:/data/db
+  
+  # Mongo Express Service
+  mongo-express:
+    image: mongo-express:latest # latest image
+    container_name: xsc-mongo-express
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_SERVER: xsc-mongo-db 
+      # use the name of the mongo container above for server env var.
+      # In our case this is mongodb
+
+  xsc-db:
+    container_name: xsc-db
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    environment:
+      SA_PASSWORD: "Welcome@1234"
+      ACCEPT_EULA: "Y"
+    restart: always
+    ports:
+      - "1436:1433"
+    volumes:
+      - c:\docker\db\xsc:/var/opt/mssql/data
+
+  xc.xsc.api:
+    container_name: xc.smart-clear.api
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:80
+    depends_on:
+      - mongodb
+    ports:
+      - "80"
+      - "443"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/root/.aspnet/https:ro
+      - c:\xc_ccmp_uam_api:/app/wwwroot
