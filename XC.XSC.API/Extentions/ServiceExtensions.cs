@@ -248,6 +248,7 @@ namespace XC.XSC.API.Extentions
             services.AddScoped<IWorkflowClient, WorkflowClient>();
             services.AddScoped<IWorkflowService, WorkflowService>();
 
+            //services.AddSingleton(async x => await RedisConnection.InitializeAsync(connectionString: keyVaultConfig.RedisConnectionString));
 
         }
     }
